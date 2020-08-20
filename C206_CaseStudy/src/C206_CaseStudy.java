@@ -98,6 +98,7 @@ public class C206_CaseStudy {
 		Courses crse = new Courses(code,title,categoryName,description,duration,requisite);
 		return crse;
 	}
+	//add course to list
 	public static void addCourse(ArrayList<Courses> courseList,Courses crse)
 	{
 		

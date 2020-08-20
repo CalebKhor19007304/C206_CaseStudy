@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class C206_CaseStudy {
 	static String code;
-	ArrayList<Courses>courseList=new ArrayList<Courses>();
+	static ArrayList<Courses>courseList=new ArrayList<Courses>();
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -29,7 +29,7 @@ public class C206_CaseStudy {
 				else if(option==2)
 				{
 					System.out.println("1.Add Course");
-					System.out.println("2.Update Course");
+					System.out.println("2.View Course");
 					System.out.println("3.Delete Course");
 					optionCourse=Helper.readInt("Enter option > ");
 					if(optionCourse==1)
@@ -38,7 +38,7 @@ public class C206_CaseStudy {
 					}
 					else if(optionCourse==2)
 					{
-						
+						C206_CaseStudy.viewAllCourses(courseList);
 					}
 					else if (optionCourse==3)
 					{
@@ -99,9 +99,9 @@ public class C206_CaseStudy {
 		String title=Helper.readString("Enter course title >");
 		String categoryName=Helper.readString("Enter category name > ");
 		String description=Helper.readString("Enter course description > ");
-		String duration=Helper.readString("Enter course duration > ");
+		int duration=Helper.readInt("Enter course duration in years > ");
 		String requisite=Helper.readString("Enter pre-requisite course > ");
-		if(code.equals("")||title.equals("")||categoryName.equals("")||description.equals("")||duration.equals("")||requisite.equals(""))
+		if(code.equals("")||title.equals("")||categoryName.equals("")||description.equals("")||duration==0||requisite.equals(""))
 		{
 			check2=false;
 		}
@@ -118,7 +118,7 @@ public class C206_CaseStudy {
 		{
 		for(int i=0;i<courseList.size();i++)
 		{
-		if(!code.equals(courseList.get(i).getCode())||!code.equals("")||!title.equals("")||!categoryName.equals("")||!description.equals("")||!duration.equals("")||!requisite.equals(""))
+		if(!code.equals(courseList.get(i).getCode()))
 		{
 			check=false;
 		}
@@ -131,7 +131,7 @@ public class C206_CaseStudy {
 		if(check==false)
 		{
 			courseList.add(new Courses(code,title,categoryName,description,duration,requisite));
-			System.out.println(courseList.size());
+			
 		}
 		else
 		{
@@ -141,5 +141,22 @@ public class C206_CaseStudy {
 		
 		
 	}
-	
+	public static  String retrieveAllCourses(ArrayList<Courses>courseList)
+	{
+		String output="";
+		
+		for(int i=0;i<courseList.size();i++)
+		{
+			output+=String.format("\n%-10s %-20s %-20s %-20s %-8d %-10s",courseList.get(i).getCode(),courseList.get(i).getTitle(),courseList.get(i).getName()
+					,courseList.get(i).getDescription(),courseList.get(i).getDuration(),courseList.get(i).getRequisite());
+		}
+		return output;
+	}
+	public static void viewAllCourses(ArrayList<Courses>courseList)
+	{
+		System.out.println("COURSES");
+		String output=String.format("%-10s %-20s %-20s %-20s %-8s %-10s","COURSE CODE","TITLE","CATEGORY NAME","DESCRIPTION","DURATION","REQUISITE");
+		output+=retrieveAllCourses(courseList);
+		System.out.println(output);
+	}
 }

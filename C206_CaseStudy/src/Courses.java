@@ -4,9 +4,9 @@ public class Courses {
 	String title;
 	String name;
 	String description;
-	String duration;
+	int duration;
 	String requisite;
-	public Courses(String code, String title, String name, String description, String duration, String requisite) 
+	public Courses(String code, String title, String name, String description,int duration, String requisite) 
 	{
 		
 		this.code = code;
@@ -40,10 +40,10 @@ public class Courses {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getDuration() {
+	public int getDuration() {
 		return duration;
 	}
-	public void setDuration(String duration) {
+	public void setDuration(int duration) {
 		this.duration = duration;
 	}
 	public String getRequisite() {

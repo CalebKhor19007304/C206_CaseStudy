@@ -35,5 +35,13 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that Courses arraylist size is 2", 2, courseList.size());    
 		
 	}
+	@Test
+	public void retrieveAllCourses()
+	{
+		assertNotNull("Test if there is valid Chromebook arraylist to retrieve item from",courseList);
+		String allCourses=C206_CaseStudy.retrieveAllCourses(courseList);
+		String testOutput = "";
+		assertEquals("Test that the retrieved Chromebooklist is empty?", testOutput, allCourses);
+	}
 
 }

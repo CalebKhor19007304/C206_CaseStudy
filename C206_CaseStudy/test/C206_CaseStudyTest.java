@@ -27,9 +27,12 @@ public class C206_CaseStudyTest {
 	@Test
 	public void addCourseTest()
 	{
+		assertEquals("Check that Courses arraylist size is 0", 0, courseList.size());
 		assertNotNull("Check if there is valid Course arraylist to add to", courseList);
-		C206_CaseStudy.addCourse(courseList, crse1);
-		assertEquals("Check that Courses arraylist size is 1", 1, courseList.size());
+		C206_CaseStudy.addCourse(courseList);
+		assertEquals("Check that Courses arraylist size is 1", 1, courseList.size());   
+		C206_CaseStudy.addCourse(courseList);
+		assertEquals("Check that Courses arraylist size is 2", 2, courseList.size());    
 		
 	}
 

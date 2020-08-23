@@ -42,7 +42,7 @@ public class C206_CaseStudy {
 					}
 					else if (optionCourse==3)
 					{
-						
+						C206_CaseStudy.deleteCourse(courseList);
 					}
 					else if(option==4)
 					{
@@ -158,5 +158,17 @@ public class C206_CaseStudy {
 		String output=String.format("%-10s %-20s %-20s %-20s %-8s %-10s","COURSE CODE","TITLE","CATEGORY NAME","DESCRIPTION","DURATION","REQUISITE");
 		output+=retrieveAllCourses(courseList);
 		System.out.println(output);
+	}
+	public static void deleteCourse(ArrayList<Courses>courseList)
+	{
+		String code=Helper.readString("Enter course code to delete > ");
+		for(int i=0;i<courseList.size();i++)
+		{
+			if(code.equals(courseList.get(i).getCode()))
+			{
+				courseList.remove(i);
+				System.out.println("Course deleted");
+			}
+		}
 	}
 }

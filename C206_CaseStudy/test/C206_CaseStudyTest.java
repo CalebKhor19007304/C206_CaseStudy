@@ -43,5 +43,14 @@ public class C206_CaseStudyTest {
 		String testOutput = "";
 		assertEquals("Test that the retrieved Chromebooklist is empty?", testOutput, allCourses);
 	}
+	@Test
+	public void deleteCourse()
+	{
+		C206_CaseStudy.addCourse(courseList);
+		assertNotNull("Check if there is valid Course  to delete", courseList);
+		C206_CaseStudy.deleteCourse(courseList);	
+		assertEquals("Check that Courses arraylist size is 0", 0, courseList.size());
+		
+	}
 
 }

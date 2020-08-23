@@ -16,6 +16,7 @@ public class Courses {
 		this.duration = duration;
 		this.requisite = requisite;
 	}
+	//getters
 	public String getCode() {
 		return code;
 	}

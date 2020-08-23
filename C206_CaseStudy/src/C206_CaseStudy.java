@@ -23,7 +23,7 @@ public class C206_CaseStudy {
 				
 				menu();
 				option=Helper.readInt("Enter option > ");
-				
+				//Caleb
 				if(option==1)
 				{
 					System.out.println("1. Add member");
@@ -108,7 +108,7 @@ public class C206_CaseStudy {
 		System.out.println("6. Quit");
 		
 	}
-	//input member details
+	//input member details - Caleb
 	public static Member inputMember(){
 		
 		String name = Helper.readString("Enter Name > ");
@@ -120,14 +120,14 @@ public class C206_CaseStudy {
 		
 		Member m= new Member(name, gender,mobile,email,DOB,country);
 		return m;
-	}// add member
+	}// add member - Caleb
 		public static void addMember(ArrayList<Member> MemberList, Member m) {
 			
 			MemberList.add(m);
 			System.out.println("Member added");
 		}
 		
-	// view all member
+	// view all member - Caleb
 		public static String retrieveALLMembers(ArrayList<Member> MemberList) {
 			String output = "";
 
@@ -139,7 +139,7 @@ public class C206_CaseStudy {
 			}
 			return output;
 		}
-
+// view members - Caleb
 public static String viewMembers(ArrayList<Member> MemberList) {
 	
 	String output = String.format("%-10s %-20s %-20s %-20s %-8s %10s\n", "NAME", "GENDER",
@@ -149,7 +149,7 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 	return null;
 }
 
-	// Delete Member
+	// Delete Member - Caleb
 		public static void deleteMember(ArrayList<Member>MemberList)
 		{
 			String Email=Helper.readString("Enter email to delete > ");

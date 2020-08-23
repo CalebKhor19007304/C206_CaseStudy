@@ -26,7 +26,7 @@ public class C206_CaseStudyTest {
 		//fail("Not yet implemented"); 
 		assertTrue("C206_CaseStudy_SampleTest ",true);
 	}
-	
+	// Caleb
 	@Test
 	public void addMember() {
 		assertEquals("Check that Member arraylist size is 0", 0, MemberList.size());
@@ -37,6 +37,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that Member arraylist size is 2", 2, MemberList.size());    
 		
 	}
+	// Caleb
 	@Test
 	public void viewMembers() {
 		assertNotNull("Test if there is valid Member arraylist to retrieve item from",MemberList);
@@ -44,6 +45,7 @@ public class C206_CaseStudyTest {
 		String testOutput = "";
 		assertEquals("Test that the retrieved Memberlist is empty?", testOutput, allMembers);
 	}
+	// Caleb
 	@Test
 	public void deleteMember() {
 		C206_CaseStudy.addMember(MemberList, null);

@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class C206_CaseStudy {
 	static String code;
 	static ArrayList<Courses>courseList=new ArrayList<Courses>();
+	static ArrayList<Member> MemberList = new ArrayList<Member>();
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -15,6 +16,7 @@ public class C206_CaseStudy {
 		public void start() {
 			int option=0;
 			int optionCourse=0;
+			int memberOption = 0;
 			
 			while(option!=6)
 			{
@@ -24,7 +26,24 @@ public class C206_CaseStudy {
 				
 				if(option==1)
 				{
+					System.out.println("1. Add member");
+					System.out.println("2. View member");
+					System.out.println("3. Delete member");
+					System.out.println("4. Quit");
+					memberOption = Helper.readInt("Enter option > ");
 					
+					if(memberOption == 1) {
+						Member m = inputMember();
+						C206_CaseStudy.addMember(MemberList, m);
+					}else if(memberOption == 2) {
+						C206_CaseStudy.viewMembers(MemberList);
+					}else if(memberOption == 3) {
+						C206_CaseStudy.deleteMember(MemberList);
+					}else if(memberOption == 4) {
+						System.out.println("Thank you!");
+					}else {
+						System.out.println("Invalid Option");
+					}
 				}
 				else if(option==2)
 				{
@@ -89,7 +108,60 @@ public class C206_CaseStudy {
 		System.out.println("6. Quit");
 		
 	}
+	//input member details
+	public static Member inputMember(){
+		
+		String name = Helper.readString("Enter Name > ");
+		char gender = Helper.readChar("Enter Gender (M/F) > ");
+		int mobile = Helper.readInt("Enter Mobile Number > ");
+		String email = Helper.readString("Enter email address > ");
+		String DOB = Helper.readString("Enter Date of Birth (DD/MM/YYYY) > ");
+		String country = Helper.readString("Enter country of residence > ");
+		
+		Member m= new Member(name, gender,mobile,email,DOB,country);
+		return m;
+	}// add member
+		public static void addMember(ArrayList<Member> MemberList, Member m) {
+			
+			MemberList.add(m);
+			System.out.println("Member added");
+		}
+		
+	// view all member
+		public static String retrieveALLMembers(ArrayList<Member> MemberList) {
+			String output = "";
 
+			for (int i = 0; i < MemberList.size(); i++) {
+
+				output += String.format("%-10s %-20c %-20d %-20s %-8s %10s\n", MemberList.get(i).getName(), MemberList.get(i).getGender(), MemberList.get(i).getMobile(),
+						MemberList.get(i).getEmail(), MemberList.get(i).getDOB(), MemberList.get(i).getCountry());
+						
+			}
+			return output;
+		}
+
+public static String viewMembers(ArrayList<Member> MemberList) {
+	
+	String output = String.format("%-10s %-20s %-20s %-20s %-8s %10s\n", "NAME", "GENDER",
+			"MOBILE NO", "EMAIL","DATE OF BIRTH", "COUNTRY");
+	 output += retrieveALLMembers(MemberList);	
+	System.out.println(output);
+	return null;
+}
+
+	// Delete Member
+		public static void deleteMember(ArrayList<Member>MemberList)
+		{
+			String Email=Helper.readString("Enter email to delete > ");
+			for(int i=0;i<MemberList.size();i++)
+			{
+				if(Email.equals(MemberList.get(i).getEmail()))
+				{
+					MemberList.remove(i);
+					System.out.println("Member deleted");
+				}
+			}
+		}
 	//add course to list.
 	public static void addCourse(ArrayList<Courses> courseList)
 	{

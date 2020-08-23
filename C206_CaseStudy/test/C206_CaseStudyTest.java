@@ -9,10 +9,12 @@ import org.junit.Test;
 public class C206_CaseStudyTest {
 	private Courses crse1; 
 	private ArrayList<Courses>courseList;
+	private ArrayList<Member>MemberList;
 	
 	@Before
 	public void setUp() throws Exception {
 		courseList=new ArrayList<Courses>();
+		MemberList = new ArrayList<Member>();
 	}
 
 	@After
@@ -24,6 +26,32 @@ public class C206_CaseStudyTest {
 		//fail("Not yet implemented"); 
 		assertTrue("C206_CaseStudy_SampleTest ",true);
 	}
+	
+	@Test
+	public void addMember() {
+		assertEquals("Check that Member arraylist size is 0", 0, MemberList.size());
+		assertNotNull("Check if there is valid Course arraylist to add to", MemberList);
+		C206_CaseStudy.addMember(MemberList, null);
+		assertEquals("Check that Member arraylist size is 1", 1, MemberList.size());   
+		C206_CaseStudy.addMember(MemberList, null);
+		assertEquals("Check that Member arraylist size is 2", 2, MemberList.size());    
+		
+	}
+	@Test
+	public void viewMembers() {
+		assertNotNull("Test if there is valid Member arraylist to retrieve item from",MemberList);
+		String allMembers=C206_CaseStudy.viewMembers(MemberList);
+		String testOutput = "";
+		assertEquals("Test that the retrieved Memberlist is empty?", testOutput, allMembers);
+	}
+	@Test
+	public void deleteMember() {
+		C206_CaseStudy.addMember(MemberList, null);
+		assertNotNull("Check if there is valid Member  to delete", MemberList);
+		C206_CaseStudy.deleteMember(MemberList);	
+		assertEquals("Check that Member arraylist size is 0", 0, MemberList.size());
+	}
+
 	@Test
 	public void addCourseTest()
 	{

@@ -1,11 +1,11 @@
 
 public class Member {
-	String name;
-	char gender;
-	int mobile;
-	String email;
-	String DOB;
-	String country;
+	private String name;
+	private char gender;
+	private int mobile;
+	private String email;
+	private String DOB;
+	private String country;
 	
 	public Member(String name, char gender, int mobile, String email, String DOB, String country) {
 		this.name = name;

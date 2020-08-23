@@ -159,6 +159,7 @@ public class C206_CaseStudy {
 		output+=retrieveAllCourses(courseList);
 		System.out.println(output);
 	}
+	//delete
 	public static void deleteCourse(ArrayList<Courses>courseList)
 	{
 		String code=Helper.readString("Enter course code to delete > ");

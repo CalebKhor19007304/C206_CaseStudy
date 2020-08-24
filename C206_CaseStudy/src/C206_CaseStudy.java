@@ -280,7 +280,7 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 	
 	//Add Course Category (Elayne)
 		public static CourseCategory inputCategory() {
-			String name = Helper.readString("Enter course name > ");
+			String name = Helper.readString("Enter category name > ");
 			String description = Helper.readString("Enter category description > ");
 			
 			CourseCategory courseCat = new CourseCategory(name, description);

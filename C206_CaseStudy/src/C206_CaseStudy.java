@@ -140,8 +140,8 @@ public class C206_CaseStudy {
 		System.out.println("1. Manage member");
 		System.out.println("2. Manage course");
 		System.out.println("3. Manage category");
-		System.out.println("4. Manage registration");
-		System.out.println("5. Manage course schedule");
+		System.out.println("4. Manage course schedule");
+		System.out.println("5. Manage registration");
 		System.out.println("6. Quit");
 		
 	}

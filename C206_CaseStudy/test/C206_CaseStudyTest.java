@@ -10,11 +10,13 @@ public class C206_CaseStudyTest {
 	private Courses crse1; 
 	private ArrayList<Courses>courseList;
 	private ArrayList<Member>MemberList;
+	private ArrayList<CourseCategory>categoryList;
 	
 	@Before
 	public void setUp() throws Exception {
 		courseList=new ArrayList<Courses>();
 		MemberList = new ArrayList<Member>();
+		categoryList = new ArrayList<CourseCategory>();
 	}
 
 	@After
@@ -81,6 +83,34 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.deleteCourse(courseList);	
 		assertEquals("Check that Courses arraylist size is 0", 0, courseList.size());
 		
+	}
+	
+	@Test
+	public void addCategoryTest()
+	{
+		assertEquals("Check that Category arraylist size is 0", 0, categoryList.size());
+		assertNotNull("Check if there is valid Category arraylist to add to", categoryList);
+		C206_CaseStudy.inputCategory();
+		assertEquals("Check that Category arraylist size is 1", 1, categoryList.size());   
+		C206_CaseStudy.addCourse(courseList);
+		assertEquals("Check that Category arraylist size is 2", 2, categoryList.size());    
+		
+	}
+	@Test
+	public void retrieveAllCategory()
+	{
+		assertNotNull("Test if there is valid Category arraylist to retrieve item from",categoryList);
+		String allCategory=C206_CaseStudy.retrieveAllCategory(categoryList);
+		String testOutput = "";
+		assertEquals("Test that the retrieved Category is empty?", testOutput, allCategory);
+	}
+	@Test
+	public void deleteCategory()
+	{
+		C206_CaseStudy.addCourse(courseList);
+		assertNotNull("Check if there is valid Category  to delete", categoryList);
+		C206_CaseStudy.deleteCourse(courseList);	
+		assertEquals("Check that Category arraylist size is 0", 0, categoryList.size());
 	}
 
 }

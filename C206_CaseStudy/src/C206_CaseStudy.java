@@ -4,6 +4,7 @@ public class C206_CaseStudy {
 	static String code;
 	static ArrayList<Courses>courseList=new ArrayList<Courses>();
 	static ArrayList<Member> MemberList = new ArrayList<Member>();
+	static ArrayList<CourseCategory> categoryList = new ArrayList<CourseCategory>();
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -74,7 +75,25 @@ public class C206_CaseStudy {
 				}
 				else if(option==3)
 				{
+					categoryMenu();
+					int catType = Helper.readInt("Enter option > ");
 					
+					if (catType == 1) {
+						//Add course category
+	 					CourseCategory courseCat = inputCategory();
+	 					C206_CaseStudy.addCategory(categoryList, courseCat);
+	 					
+					} else if (catType == 2) {
+						//View course category
+						C206_CaseStudy.viewAllCategory(categoryList);
+						
+					} else if (catType == 3) {
+						//Delete course category
+						C206_CaseStudy.deleteCategory(categoryList);
+					
+					} else {
+						System.out.println("Invalid type");
+					}
 				}
 				else if(option==4)
 				{
@@ -108,6 +127,18 @@ public class C206_CaseStudy {
 		System.out.println("6. Quit");
 		
 	}
+	
+	//Elayne
+	private static void categoryMenu() {
+		Helper.line(70, "=");
+		System.out.println("COURSE CATEGORIES");
+		Helper.line(70, "=");
+		
+		System.out.println("1. Add Course Category");
+		System.out.println("2. View Course Category");
+		System.out.println("3. Delete Course Catgeory");
+	}
+	
 	//input member details - Caleb
 	public static Member inputMember(){
 		
@@ -244,4 +275,62 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 			}
 		}
 	}
+	
+	//Add Course Category
+		public static CourseCategory inputCategory() {
+			String name = Helper.readString("Enter course name > ");
+			String description = Helper.readString("Enter category description > ");
+			
+			CourseCategory courseCat = new CourseCategory(name, description);
+			return courseCat;
+		}
+		
+		public static void addCategory(ArrayList<CourseCategory> categoryList, CourseCategory courseCat) {
+			categoryList.add(courseCat);
+			System.out.println("Category Added!");
+		}
+		
+		//View Course Category
+		public static String retrieveAllCategory(ArrayList<CourseCategory> categoryList) {
+			String output = "";
+			
+			for (int i = 0; i < categoryList.size(); i++) {
+				output += String.format("%-50s %-50s\n", categoryList.get(i).getCategoryName(), categoryList.get(i).getCategoryDesc());
+			}
+			return output;
+		}
+		
+		public static void viewAllCategory(ArrayList<CourseCategory> categoryList) {
+			Helper.line(70, "=");
+			System.out.println("COURSE CATEGORY LIST");
+			Helper.line(70, "=");
+			
+			String output = String.format("%-50s %-50s\n", "CATEGORY NAME", "CATEGORY DESCRIPTION");
+			output += retrieveAllCategory(categoryList);
+			System.out.println(output);
+		}
+		
+		//Delete Course Category
+		public static boolean doDeleteCategory(ArrayList<CourseCategory> categoryList, String name) {
+			boolean isDeleted = false;
+			
+			for (int i = 0; i < categoryList.size(); i++) {
+				if (name.equalsIgnoreCase(categoryList.get(i).getCategoryName())) {
+					isDeleted = true;
+				}
+			}
+			return isDeleted;
+		}
+		
+		public static void deleteCategory(ArrayList<CourseCategory> categoryList) {
+			C206_CaseStudy.viewAllCategory(categoryList);
+			String name = Helper.readString("Enter category name > ");
+			Boolean isDeleted = doDeleteCategory(categoryList, name);
+			
+			if (isDeleted == true) {
+				System.out.println("Category " + name + "deleted!");
+			} else {
+				System.out.println("Invalid category name");
+			}
+		}
 }

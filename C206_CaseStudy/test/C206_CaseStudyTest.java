@@ -55,7 +55,7 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.deleteMember(MemberList);	
 		assertEquals("Check that Member arraylist size is 0", 0, MemberList.size());
 	}
-
+	//Si How
 	@Test
 	public void addCourseTest()
 	{
@@ -67,6 +67,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that Courses arraylist size is 2", 2, courseList.size());    
 		
 	}
+	//Si How
 	@Test
 	public void retrieveAllCourses()
 	{
@@ -75,6 +76,7 @@ public class C206_CaseStudyTest {
 		String testOutput = "";
 		assertEquals("Test that the retrieved Chromebooklist is empty?", testOutput, allCourses);
 	}
+	//Si How
 	@Test
 	public void deleteCourse()
 	{

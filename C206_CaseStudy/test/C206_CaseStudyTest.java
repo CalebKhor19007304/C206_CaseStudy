@@ -113,10 +113,12 @@ public class C206_CaseStudyTest {
 	public void deleteCategory()
 	{
 		C206_CaseStudy.addCategory(categoryList, null);
-		assertNotNull("Check if there is valid Category  to delete", categoryList);
+		assertNotNull("Check if there is valid Category to delete", categoryList);
 		C206_CaseStudy.deleteCategory(categoryList);	
 		assertEquals("Check that Category arraylist size is 0", 0, categoryList.size());
-	}//Done by Hazim
+	}
+	
+	//Done by Hazim
 	@Test
 	public void addScheduleTest()
 	{

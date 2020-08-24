@@ -109,14 +109,13 @@ public class C206_CaseStudy {
 					}else if (optionSchedule == 2) {
 						C206_CaseStudy.viewAllSchedules(ScheduleList);
 					}else if(optionSchedule == 3) {
-						C206_CaseStudy.deleteSchedules(ScheduleList);
+						C206_CaseStudy.deleteSchedule(ScheduleList);
 						
 					}else {
 						System.out.println("INVALID OPTION!!!");
 					}
-					
-					
-				}
+					}
+				
 				else if(option==5)
 				{
 					
@@ -346,62 +345,54 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 			}
 		}
 			
-		//Hazim
-		public static Course_Schedule inputschedule() {
-			String id = Helper.readString("Enter Schedule ID > " );
-			int price = Helper.readInt("Enter Price > ");
-			Date startdate = Helper.readDate("Enter start date > ");
-			Date enddate = Helper.readDate("Enter End date > ");
-			String Location = Helper.readString("Enter Location");
-			
-			Course_Schedule CrseSche = new Course_Schedule( id,  price,  startdate,  enddate,  Location);
-			return CrseSche;
-			
-		}//Hazim
-		public static void addSchedule(ArrayList<Course_Schedule> ScheduleList, Course_Schedule CrseSche) {
-			ScheduleList.add(CrseSche);
-			System.out.println("Schedule Added!");
-			
-		}//Hazim
-		public static String retrieveAllSchedules(ArrayList<Course_Schedule> ScheduleList) {
-			String output = "";
-			
-			for (int i = 0; i < categoryList.size(); i++) {
-				output += String.format("%-50s %-50s\n", ScheduleList.get(i).getId(), ScheduleList.get(i).getPrice(), ScheduleList.get(i).getStartdate(),ScheduleList.get(i).getEnddate(), ScheduleList.get(i).getLocation());
-				
-			}
-			return output;
-		}//Hazim
-		public static void viewAllSchedules(ArrayList<Course_Schedule> ScheduleList) {
-			Helper.line(70, "=");
-			System.out.println("COURSE CATEGORY LIST");
-			Helper.line(70, "=");
-			
-			String output = String.format("%-50s %-50d %-50d %-50d % -50s\n", "Schedule ID", "PRICE", "START DATE", "END DATE", "LOCATION");
-			output += retrieveAllSchedules(ScheduleList);
-			System.out.println(output);
-		}//Hazim
-		public static boolean doDeleteSchedule(ArrayList<Course_Schedule> ScheduleList, String id) {
-			boolean isDeleted = false;
-			
-			for (int i = 0; i < categoryList.size(); i++) {
-				if (id.equals(ScheduleList.get(i).getId())) {
-					isDeleted = true;
+		// Add Schedule - Hazim
+				public static Course_Schedule inputschedule() {
+					String id = Helper.readString("Enter Schedule ID > " );
+					int price = Helper.readInt("Enter Price > ");
+					String startdate = Helper.readString("Enter start date(DD/MM/YY) >  ");
+					String enddate = Helper.readString("Enter End date(DD/MM/YY) >  ");
+					String Location = Helper.readString("Enter Location > ");
+					
+					Course_Schedule CrseSche = new Course_Schedule( id,  price,  startdate,  enddate,  Location);
+					return CrseSche;
+					
 				}
-			}
-			return isDeleted;
-		}//Hazim
-		public static void deleteSchedules(ArrayList<Course_Schedule> ScheduleList) {
-			C206_CaseStudy.viewAllSchedules(ScheduleList);
-			String id = Helper.readString("Enter Schedule ID > ");
-			Boolean isDeleted = doDeleteSchedule(ScheduleList, id);
-			
-			if (isDeleted == true) {
-				System.out.println("Schedule " + id + "deleted!");
-			} else {
-				System.out.println("Invalid Schedule id");
-			}
-		
-		
-}
-}
+				public static void addSchedule(ArrayList<Course_Schedule> ScheduleList, Course_Schedule CrseSche) {
+					ScheduleList.add(CrseSche);
+					System.out.println("Schedule Added!");
+					
+				}
+				// View Schedule - Hazim
+				public static String retrieveAllSchedules(ArrayList<Course_Schedule> ScheduleList) {
+					String output = "";
+					
+					for (int i = 0; i < ScheduleList.size(); i++) {
+						output += String.format("%-20s %-20d %-20s %-20s %-20s\n", ScheduleList.get(i).getId(), ScheduleList.get(i).getPrice(), ScheduleList.get(i).getStartdate(),ScheduleList.get(i).getEnddate(), ScheduleList.get(i).getLocation());
+						
+					}
+					return output;
+				}
+				public static void viewAllSchedules(ArrayList<Course_Schedule> ScheduleList) {
+					Helper.line(70, "=");
+					System.out.println("COURSE SCHEDULE LIST");
+					Helper.line(70, "=");
+					
+					String output = String.format("%-20s %-20s %-20s %-20s %-20s\n", "Schedule ID", "PRICE", "START DATE", "END DATE", "LOCATION");
+					output += retrieveAllSchedules(ScheduleList);
+					System.out.println(output);
+				}
+				// Delete Schedule - Hazim
+				public static void deleteSchedule(ArrayList<Course_Schedule>ScheduleList)
+				{
+					String id=Helper.readString("Enter Schedule ID to delete > ");
+					for(int i=0;i<ScheduleList.size();i++)
+					{
+						if(id.equals(ScheduleList.get(i).getId()))
+						{
+							ScheduleList.remove(i);
+							System.out.println("Schedule deleted");
+						}
+					}
+					
+				}
+				}

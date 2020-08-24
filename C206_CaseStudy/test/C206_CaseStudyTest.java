@@ -119,35 +119,34 @@ public class C206_CaseStudyTest {
 	}
 	
 	//Done by Hazim
-	@Test
-	public void addScheduleTest()
-	{
-		assertEquals("Check that Schedule arraylist size is 0", 0, ScheduleList.size());
-		assertNotNull("Check if there is valid Category arraylist to add to", ScheduleList);
-		C206_CaseStudy.addSchedule(ScheduleList, null);
-		assertEquals("Check that Schedule arraylist size is 1", 1, ScheduleList.size());   
-		C206_CaseStudy.addSchedule(ScheduleList, null);
-		assertEquals("Check that Category arraylist size is 2", 2, ScheduleList.size());    
-		
-	}
-	//Done by Hazim
-	@Test
-	public void retrieveAllSchdules()
-	{
-		assertNotNull("Test if there is valid Schedule arraylist to retrieve item from",ScheduleList);
-		String allSchedules=C206_CaseStudy.retrieveAllSchedules(ScheduleList);
-		String testOutput = "";
-		assertEquals("Test that the retrieved Schedule is empty?", testOutput, allSchedules);
-	}
-	//Done by Hazim
-	@Test
-	public void deleteSchedules()
-	{
-		C206_CaseStudy.addSchedule(ScheduleList, null);
-		assertNotNull("Check if there is valid Schedule to delete", ScheduleList);
-		C206_CaseStudy.deleteSchedules(ScheduleList);	
-		assertEquals("Check that Schedules arraylist size is 0", 0, ScheduleList.size());
-		
-
-}
+		@Test
+		public void addScheduleTest()
+		{
+			assertEquals("Check that Schedule arraylist size is 0", 0, ScheduleList.size());
+			assertNotNull("Check if there is valid Schedule arraylist to add to", ScheduleList);
+			C206_CaseStudy.addSchedule(ScheduleList, null);
+			assertEquals("Check that Schedule arraylist size is 1", 1, ScheduleList.size());   
+			C206_CaseStudy.addSchedule(ScheduleList, null);
+			assertEquals("Check that Schedule arraylist size is 2", 2, ScheduleList.size());    
+			
+		}
+		//Done by Hazim
+		@Test
+		public void retrieveAllSchedules()
+		{
+			assertNotNull("Test if there is valid Schedule arraylist to retrieve item from",ScheduleList);
+			String allSchedules=C206_CaseStudy.retrieveAllSchedules(ScheduleList);
+			String testOutput = "";
+			assertEquals("Test that the retrieved Schedule is empty?", testOutput, allSchedules);
+		}
+		//Done by Hazim
+		@Test
+		public void deleteSchedules()
+		{
+			C206_CaseStudy.addSchedule(ScheduleList, null);
+			assertNotNull("Check if there is valid Schedule to delete", ScheduleList);
+			C206_CaseStudy.deleteSchedule(ScheduleList);	
+			assertEquals("Check that Schedules arraylist size is 0", 0, ScheduleList.size());
+			
+		}
 }

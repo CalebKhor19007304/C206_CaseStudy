@@ -114,7 +114,7 @@ public class C206_CaseStudyTest {
 	{
 		C206_CaseStudy.addCategory(categoryList, null);
 		assertNotNull("Check if there is valid Category  to delete", categoryList);
-		C206_CaseStudy.deleteCourse(courseList);	
+		C206_CaseStudy.deleteCategory(categoryList);	
 		assertEquals("Check that Category arraylist size is 0", 0, categoryList.size());
 	}
 

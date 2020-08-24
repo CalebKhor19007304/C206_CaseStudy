@@ -45,7 +45,7 @@ public class C206_CaseStudy {
 						System.out.println("Invalid Option");
 					}
 				}
-				else if(option==2)
+				else if(option==2)//Si How
 				{
 					System.out.println("1.Add Course");
 					System.out.println("2.View Course");
@@ -162,7 +162,7 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 				}
 			}
 		}
-	//add course to list.
+	//add course to list.Done by Si How
 	public static void addCourse(ArrayList<Courses> courseList)
 	{
 		boolean check=false;
@@ -213,6 +213,7 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 		
 		
 	}
+	//Done by Si How
 	public static  String retrieveAllCourses(ArrayList<Courses>courseList)
 	{
 		String output="";
@@ -224,6 +225,7 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 		}
 		return output;
 	}
+	//Done by Si How
 	public static void viewAllCourses(ArrayList<Courses>courseList)
 	{
 		System.out.println("COURSES");
@@ -231,7 +233,7 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 		output+=retrieveAllCourses(courseList);
 		System.out.println(output);
 	}
-	//delete
+	//delete Done by Si How
 	public static void deleteCourse(ArrayList<Courses>courseList)
 	{
 		String code=Helper.readString("Enter course code to delete > ");

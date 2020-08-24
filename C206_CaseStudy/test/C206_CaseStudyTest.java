@@ -31,7 +31,7 @@ public class C206_CaseStudyTest {
 	}
 	// Caleb
 	@Test
-	public void addMember() {
+	public void addMemberTest() {
 		assertEquals("Check that Member arraylist size is 0", 0, MemberList.size());
 		assertNotNull("Check if there is valid Course arraylist to add to", MemberList);
 		C206_CaseStudy.addMember(MemberList, null);
@@ -42,7 +42,7 @@ public class C206_CaseStudyTest {
 	}
 	// Caleb
 	@Test
-	public void viewMembers() {
+	public void viewMembersTest() {
 		assertNotNull("Test if there is valid Member arraylist to retrieve item from",MemberList);
 		String allMembers=C206_CaseStudy.viewMembers(MemberList);
 		String testOutput = "";
@@ -50,7 +50,7 @@ public class C206_CaseStudyTest {
 	}
 	// Caleb
 	@Test
-	public void deleteMember() {
+	public void deleteMemberTest() {
 		C206_CaseStudy.addMember(MemberList, null);
 		assertNotNull("Check if there is valid Member  to delete", MemberList);
 		C206_CaseStudy.deleteMember(MemberList);	

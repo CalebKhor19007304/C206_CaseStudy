@@ -93,7 +93,7 @@ public class C206_CaseStudyTest {
 	{
 		assertEquals("Check that Category arraylist size is 0", 0, categoryList.size());
 		assertNotNull("Check if there is valid Category arraylist to add to", categoryList);
-		C206_CaseStudy.inputCategory();
+		C206_CaseStudy.addCategory(categoryList, null);
 		assertEquals("Check that Category arraylist size is 1", 1, categoryList.size());   
 		C206_CaseStudy.addCourse(courseList);
 		assertEquals("Check that Category arraylist size is 2", 2, categoryList.size());    
@@ -112,7 +112,7 @@ public class C206_CaseStudyTest {
 	@Test
 	public void deleteCategory()
 	{
-		C206_CaseStudy.addCourse(courseList);
+		C206_CaseStudy.addCategory(categoryList, null);
 		assertNotNull("Check if there is valid Category  to delete", categoryList);
 		C206_CaseStudy.deleteCourse(courseList);	
 		assertEquals("Check that Category arraylist size is 0", 0, categoryList.size());

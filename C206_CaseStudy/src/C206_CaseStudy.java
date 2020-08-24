@@ -1,10 +1,11 @@
 import java.util.ArrayList;
-
+import java.util.Date;
 public class C206_CaseStudy {
 	static String code;
 	static ArrayList<Courses>courseList=new ArrayList<Courses>();
 	static ArrayList<Member> MemberList = new ArrayList<Member>();
 	static ArrayList<CourseCategory> categoryList = new ArrayList<CourseCategory>();
+	static ArrayList<Course_Schedule> ScheduleList = new ArrayList<Course_Schedule>();
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -95,8 +96,25 @@ public class C206_CaseStudy {
 						System.out.println("Invalid type");
 					}
 				}
-				else if(option==4)
+				else if(option==4) //Hazim
 				{
+
+					System.out.println("1.Add Course Schedule!");
+					System.out.println("2.View Course Schedule!");
+					System.out.println("3.Delete Course Schedule!");
+					int optionSchedule = Helper.readInt("Enter an option > ");
+					if (optionSchedule == 1) {
+						Course_Schedule CrseSche = inputschedule();
+						C206_CaseStudy.addSchedule(ScheduleList, CrseSche);
+					}else if (optionSchedule == 2) {
+						C206_CaseStudy.viewAllSchedules(ScheduleList);
+					}else if(optionSchedule == 3) {
+						C206_CaseStudy.deleteSchedules(ScheduleList);
+						
+					}else {
+						System.out.println("INVALID OPTION!!!");
+					}
+					
 					
 				}
 				else if(option==5)
@@ -122,8 +140,8 @@ public class C206_CaseStudy {
 		System.out.println("1. Manage member");
 		System.out.println("2. Manage course");
 		System.out.println("3. Manage category");
-		System.out.println("4. Manage registration");
-		System.out.println("5. Manage course schedule");
+		System.out.println("4. Manage course schedule");
+		System.out.println("5. Manage registration");
 		System.out.println("6. Quit");
 		
 	}
@@ -323,7 +341,7 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 			}
 			return isDeleted;
 		}
-		
+		//Hazim
 		public static void deleteCategory(ArrayList<CourseCategory> categoryList) {
 			C206_CaseStudy.viewAllCategory(categoryList);
 			String name = Helper.readString("Enter category name > ");
@@ -335,4 +353,62 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 				System.out.println("Invalid category name");
 			}
 		}
+		//Hazim
+		public static Course_Schedule inputschedule() {
+			String id = Helper.readString("Enter Schedule ID > " );
+			int price = Helper.readInt("Enter Price > ");
+			Date startdate = Helper.readDate("Enter start date > ");
+			Date enddate = Helper.readDate("Enter End date > ");
+			String Location = Helper.readString("Enter Location");
+			
+			Course_Schedule CrseSche = new Course_Schedule( id,  price,  startdate,  enddate,  Location);
+			return CrseSche;
+			
+		}//Hazim
+		public static void addSchedule(ArrayList<Course_Schedule> ScheduleList, Course_Schedule CrseSche) {
+			ScheduleList.add(CrseSche);
+			System.out.println("Schedule Added!");
+			
+		}//Hazim
+		public static String retrieveAllSchedules(ArrayList<Course_Schedule> ScheduleList) {
+			String output = "";
+			
+			for (int i = 0; i < categoryList.size(); i++) {
+				output += String.format("%-50s %-50s\n", ScheduleList.get(i).getId(), ScheduleList.get(i).getPrice(), ScheduleList.get(i).getStartdate(),ScheduleList.get(i).getEnddate(), ScheduleList.get(i).getLocation());
+				
+			}
+			return output;
+		}//Hazim
+		public static void viewAllSchedules(ArrayList<Course_Schedule> ScheduleList) {
+			Helper.line(70, "=");
+			System.out.println("COURSE CATEGORY LIST");
+			Helper.line(70, "=");
+			
+			String output = String.format("%-50s %-50d %-50d %-50d % -50s\n", "Schedule ID", "PRICE", "START DATE", "END DATE", "LOCATION");
+			output += retrieveAllSchedules(ScheduleList);
+			System.out.println(output);
+		}//Hazim
+		public static boolean doDeleteSchedule(ArrayList<Course_Schedule> ScheduleList, String id) {
+			boolean isDeleted = false;
+			
+			for (int i = 0; i < categoryList.size(); i++) {
+				if (id.equals(ScheduleList.get(i).getId())) {
+					isDeleted = true;
+				}
+			}
+			return isDeleted;
+		}//Hazim
+		public static void deleteSchedules(ArrayList<Course_Schedule> ScheduleList) {
+			C206_CaseStudy.viewAllSchedules(ScheduleList);
+			String id = Helper.readString("Enter Schedule ID > ");
+			Boolean isDeleted = doDeleteSchedule(ScheduleList, id);
+			
+			if (isDeleted == true) {
+				System.out.println("Schedule " + id + "deleted!");
+			} else {
+				System.out.println("Invalid Schedule id");
+			}
+		
+		
+}
 }

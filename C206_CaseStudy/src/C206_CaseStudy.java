@@ -330,7 +330,7 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 			Boolean isDeleted = doDeleteCategory(categoryList, name);
 			
 			if (isDeleted == true) {
-				System.out.println("Category " + name + "deleted!");
+				System.out.println("Category " + name + " deleted!");
 			} else {
 				System.out.println("Invalid category name");
 			}

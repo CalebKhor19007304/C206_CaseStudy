@@ -73,6 +73,8 @@ public class C206_CaseStudyTest {
 	public void retrieveAllCourses()
 	{
 		assertNotNull("Test if there is valid Chromebook arraylist to retrieve item from",courseList);
+		C206_CaseStudy.addCourse(courseList);
+		C206_CaseStudy.viewAllCourses(courseList);
 		String allCourses=C206_CaseStudy.retrieveAllCourses(courseList);
 		String testOutput = "";
 		assertEquals("Test that the retrieved Chromebooklist is empty?", testOutput, allCourses);

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 public class C206_CaseStudy {
-	static String code;
+	
 	static ArrayList<Courses>courseList=new ArrayList<Courses>();
 	static ArrayList<Member> MemberList = new ArrayList<Member>();
 	static ArrayList<CourseCategory> categoryList = new ArrayList<CourseCategory>();

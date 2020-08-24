@@ -331,28 +331,21 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 		}
 		
 		//Delete Course Category (Elayne)
-		public static boolean doDeleteCategory(ArrayList<CourseCategory> categoryList, String name) {
-			boolean isDeleted = false;
-			
-			for (int i = 0; i < categoryList.size(); i++) {
-				if (name.equalsIgnoreCase(categoryList.get(i).getCategoryName())) {
-					isDeleted = true;
+
+		public static void deleteCategory(ArrayList<CourseCategory>categoryList)
+		{
+			String catName=Helper.readString("Enter category name > ");
+			for(int i=0;i<categoryList.size();i++)
+			{
+				if(catName.equalsIgnoreCase(categoryList.get(i).getCategoryName()))
+				{
+					categoryList.remove(i);
+					System.out.println("Category deleted");
 				}
+				
 			}
-			return isDeleted;
 		}
-		//Hazim
-		public static void deleteCategory(ArrayList<CourseCategory> categoryList) {
-			C206_CaseStudy.viewAllCategory(categoryList);
-			String name = Helper.readString("Enter category name > ");
-			Boolean isDeleted = doDeleteCategory(categoryList, name);
 			
-			if (isDeleted == true) {
-				System.out.println("Category " + name + " deleted!");
-			} else {
-				System.out.println("Invalid category name");
-			}
-		}
 		//Hazim
 		public static Course_Schedule inputschedule() {
 			String id = Helper.readString("Enter Schedule ID > " );

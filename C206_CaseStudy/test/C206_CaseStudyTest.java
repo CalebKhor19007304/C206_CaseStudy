@@ -87,7 +87,7 @@ public class C206_CaseStudyTest {
 		
 	}
 	
-	//Elayne
+	//Done by Elayne
 	@Test
 	public void addCategoryTest()
 	{
@@ -99,7 +99,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that Category arraylist size is 2", 2, categoryList.size());    
 		
 	}
-	//Elayne
+	//Done by Elayne
 	@Test
 	public void retrieveAllCategory()
 	{
@@ -108,7 +108,7 @@ public class C206_CaseStudyTest {
 		String testOutput = "";
 		assertEquals("Test that the retrieved Category is empty?", testOutput, allCategory);
 	}
-	//Elayne
+	//Done by Elayne
 	@Test
 	public void deleteCategory()
 	{

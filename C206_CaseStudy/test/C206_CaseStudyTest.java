@@ -95,7 +95,7 @@ public class C206_CaseStudyTest {
 		assertNotNull("Check if there is valid Category arraylist to add to", categoryList);
 		C206_CaseStudy.addCategory(categoryList, null);
 		assertEquals("Check that Category arraylist size is 1", 1, categoryList.size());   
-		C206_CaseStudy.addCourse(courseList);
+		C206_CaseStudy.addCategory(categoryList, null);
 		assertEquals("Check that Category arraylist size is 2", 2, categoryList.size());    
 		
 	}

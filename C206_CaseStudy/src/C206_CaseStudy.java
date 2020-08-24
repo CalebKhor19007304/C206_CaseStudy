@@ -233,7 +233,7 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 		output+=retrieveAllCourses(courseList);
 		System.out.println(output);
 	}
-	//delete Done by Si How
+	//delete Done by Si How.
 	public static void deleteCourse(ArrayList<Courses>courseList)
 	{
 		String code=Helper.readString("Enter course code to delete > ");

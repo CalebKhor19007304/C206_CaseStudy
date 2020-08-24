@@ -73,7 +73,7 @@ public class C206_CaseStudy {
 						System.out.println("Invalid option");
 					}
 				}
-				else if(option==3)
+				else if(option==3)//Elayne
 				{
 					categoryMenu();
 					int catType = Helper.readInt("Enter option > ");
@@ -121,9 +121,9 @@ public class C206_CaseStudy {
 		System.out.println("Course Management System");
 		System.out.println("1. Manage member");
 		System.out.println("2. Manage course");
-		System.out.println("3. Manage course schedule");
+		System.out.println("3. Manage category");
 		System.out.println("4. Manage registration");
-		System.out.println("5. Manage category");
+		System.out.println("5. Manage course schedule");
 		System.out.println("6. Quit");
 		
 	}

@@ -6,6 +6,7 @@ public class C206_CaseStudy {
 	static ArrayList<Member> MemberList = new ArrayList<Member>();
 	static ArrayList<CourseCategory> categoryList = new ArrayList<CourseCategory>();
 	static ArrayList<Course_Schedule> ScheduleList = new ArrayList<Course_Schedule>();
+	static ArrayList<RegisterCourse> RegisterList = new ArrayList<RegisterCourse>();
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -116,9 +117,24 @@ public class C206_CaseStudy {
 					}
 					}
 				
-				else if(option==5)
+				else if(option==5) //Ganxi
 				{
-					
+					System.out.println("1.Register Course Schedule");
+                    System.out.println("2.View Registrations");
+                    System.out.println("3.Delete Registrations");
+                    int registerOption = Helper.readInt("Enter option > ");
+                   
+                    if(registerOption == 1) {
+                        C206_CaseStudy.registerCourseSchedule(RegisterList);
+                    }else if(registerOption == 2) {
+                        C206_CaseStudy.viewRegistrations(RegisterList);
+                    }else if(registerOption == 3) {
+                        C206_CaseStudy.deleteRegistrations(RegisterList);
+                    }else if(registerOption == 4) {
+                        System.out.println("Thank you!");
+                    }else {
+                        System.out.println("Invalid Option");
+                    }
 				}
 				else if(option==6)
 				{
@@ -395,4 +411,59 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 					}
 					
 				}
+				
+			    //Register Ganxi
+			        public static void registerCourseSchedule(ArrayList<RegisterCourse> RegisterList){
+			           
+			            int registrationNo = Helper.readInt("Enter Registration No > ");
+			            int course_schedule_id = Helper.readInt("Enter Course Schedule ID > ");
+			            String email = Helper.readString("Enter email address > ");
+			            String status = Helper.readString("Enter status > ");
+			            Date registrations_date= Helper.readDate("Enter Course schedule date > ");
+			           
+			            RegisterCourse r = new RegisterCourse(registrationNo, course_schedule_id, email,status,registrations_date);
+			            RegisterList.add(r);
+			            System.out.println("Register successful!!");
+			        }
+			       
+			        //view Ganxi
+			        public static String retrieveAllRegisterCourses(ArrayList<RegisterCourse>RegisterList)
+			        {
+			            String output="";
+			           
+			            for(int i=0;i<RegisterList.size();i++)
+			            {
+			                output+=String.format("%-15d %-10d %-20s %-10s %-10s\n",RegisterList.get(i).getRegistrationNo(),
+			                        RegisterList.get(i).getCourse_schedule_id(), RegisterList.get(i).getMail(),
+			                        RegisterList.get(i).getStatus(), RegisterList.get(i).getRegistration_date()) ;
+			            }
+			            return output;
+			        }
+			       
+			        ////view Ganxi
+			        public static String viewRegistrations(ArrayList<RegisterCourse>RegisterList)
+			        {
+			            System.out.println("REGISTRATION");
+			            String output=String.format("%-15s %-20s %-20s %-10s %-10s \n","REGISTRATION NO","COURSE SCHEDULE ID","MAIL","STATUS","DATE");
+			            output+=retrieveAllRegisterCourses(RegisterList);
+			            System.out.println(output);
+			            return null;
+			        }
+			       
+			        //delete Ganxi
+			       
+					public static void deleteRegistrations(ArrayList<RegisterCourse>RegisterList)
+			        {
+			            String registrationNo=Helper.readString("Enter Registration No to delete > ");
+			            for(int i=0;i<RegisterList.size();i++)
+			            {
+			                if(registrationNo.equals(RegisterList.get(i).getRegistrationNo()))
+			                {
+			                    RegisterList.remove(i);
+			                    System.out.println("Registrations deleted");
+			                   
+			                }
+			            }
+			        }
+
 				}

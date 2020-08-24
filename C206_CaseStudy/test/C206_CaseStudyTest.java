@@ -12,6 +12,7 @@ public class C206_CaseStudyTest {
 	private ArrayList<Member>MemberList;
 	private ArrayList<CourseCategory>categoryList;
 	private ArrayList<Course_Schedule>ScheduleList;
+	static ArrayList<RegisterCourse> RegisterList = new ArrayList<RegisterCourse>();
 	@Before
 	public void setUp() throws Exception {
 		courseList=new ArrayList<Courses>();
@@ -149,4 +150,31 @@ public class C206_CaseStudyTest {
 			assertEquals("Check that Schedules arraylist size is 0", 0, ScheduleList.size());
 			
 		}
+		// Ganxi
+        @Test
+        public void registerCourseSchedule() {
+            assertEquals("Check that RegisterCourse arraylist size is 0", 0, RegisterList.size());
+            assertNotNull("Check if there is valid Course arraylist to add to", RegisterList);
+            C206_CaseStudy.registerCourseSchedule(RegisterList);
+            assertEquals("Check that Register arraylist size is 1", 1, RegisterList.size());  
+            C206_CaseStudy.registerCourseSchedule(RegisterList);
+            assertEquals("Check that Register arraylist size is 2", 2, RegisterList.size());   
+           
+        }
+        // Ganxi
+        @Test
+        public void viewRegistrations() {
+            assertNotNull("Test if there is valid Register arraylist to retrieve item from",RegisterList);
+            String allRegistrations=C206_CaseStudy.viewRegistrations(RegisterList);
+            String testOutput = "";
+            assertEquals("Test that the retrieved Registerlist is empty?", testOutput, allRegistrations);
+        }
+        // Ganxi
+        @Test
+        public void deleteRegistrations() {
+            C206_CaseStudy.registerCourseSchedule(RegisterList);
+            assertNotNull("Check if there is valid Registrations to delete", RegisterList);
+            C206_CaseStudy.deleteRegistrations(RegisterList);   
+            assertEquals("Check that Register arraylist size is 0", 0, RegisterList.size());
+        }
 }

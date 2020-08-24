@@ -278,7 +278,7 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 		}
 	}
 	
-	//Add Course Category
+	//Add Course Category (Elayne)
 		public static CourseCategory inputCategory() {
 			String name = Helper.readString("Enter course name > ");
 			String description = Helper.readString("Enter category description > ");
@@ -292,7 +292,7 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 			System.out.println("Category Added!");
 		}
 		
-		//View Course Category
+		//View Course Category (Elayne)
 		public static String retrieveAllCategory(ArrayList<CourseCategory> categoryList) {
 			String output = "";
 			
@@ -312,7 +312,7 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 			System.out.println(output);
 		}
 		
-		//Delete Course Category
+		//Delete Course Category (Elayne)
 		public static boolean doDeleteCategory(ArrayList<CourseCategory> categoryList, String name) {
 			boolean isDeleted = false;
 			

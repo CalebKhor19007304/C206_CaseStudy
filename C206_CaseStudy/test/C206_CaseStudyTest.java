@@ -70,7 +70,7 @@ public class C206_CaseStudyTest {
 	}
 	//Si How
 	@Test
-	public void retrieveAllCourses()
+	public void retrieveAllCoursesTest()
 	{
 		assertNotNull("Test if there is valid Chromebook arraylist to retrieve item from",courseList);
 		C206_CaseStudy.addCourse(courseList);
@@ -81,13 +81,28 @@ public class C206_CaseStudyTest {
 	}
 	//Si How
 	@Test
-	public void deleteCourse()
+	public void deleteCourseTest()
 	{
 		C206_CaseStudy.addCourse(courseList);
 		assertNotNull("Check if there is valid Course  to delete", courseList);
 		C206_CaseStudy.deleteCourse(courseList);	
 		assertEquals("Check that Courses arraylist size is 0", 0, courseList.size());
 		
+	}
+	//Si How
+	@Test
+	public void updateCourseTest()
+	{
+		C206_CaseStudy.addCourse(courseList);
+		assertNotNull("Check if there is valid Course  to update", courseList);
+		C206_CaseStudy.inputUpdate(courseList);
+	}
+	//Si How
+	public void searchByCatTest()
+	{
+		C206_CaseStudy.addCourse(courseList);
+		assertNotNull("Check if there is valid Course  to search", courseList);
+		C206_CaseStudy.searchCourse(courseList);
 	}
 	
 	//Done by Elayne

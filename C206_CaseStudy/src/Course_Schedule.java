@@ -7,7 +7,6 @@ public class Course_Schedule {
     String enddate;
     String Location;
     public Course_Schedule(String id, int price, String startdate, String enddate, String Location) {
-        super();
         this.id = id;
         this.price = price;
         this.startdate = startdate;

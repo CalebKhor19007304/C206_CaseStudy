@@ -53,6 +53,9 @@ public class C206_CaseStudy {
 					System.out.println("1.Add Course");
 					System.out.println("2.View Course");
 					System.out.println("3.Delete Course");
+					System.out.println("4.Update Course");
+					System.out.println("5.Search course by category");
+					System.out.println("6.Assign schedule to course");
 					optionCourse=Helper.readInt("Enter option > ");
 					if(optionCourse==1)
 					{
@@ -66,9 +69,17 @@ public class C206_CaseStudy {
 					{
 						C206_CaseStudy.deleteCourse(courseList);
 					}
-					else if(option==4)
+					else if(optionCourse==4)
 					{
-						System.out.println("Thank you for using the system");
+						C206_CaseStudy.inputUpdate(courseList);
+					}
+					else if(optionCourse==5)
+					{
+						C206_CaseStudy.searchCourse(courseList);
+					}
+					else if(optionCourse==6)
+					{
+						C206_CaseStudy.assignSchedule(courseList);
 					}
 					else
 					{
@@ -303,13 +314,80 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 		String code=Helper.readString("Enter course code to delete > ");
 		for(int i=0;i<courseList.size();i++)
 		{
-			if(code.equals(courseList.get(i).getCode()))
+			if(code.equals(courseList.get(i).getCode()) && courseList.get(i).getScheduleid()=="")
 			{
 				courseList.remove(i);
 				System.out.println("Course deleted");
 			}
 		}
 	}
+	public static void assignSchedule(ArrayList<Courses> courseList)
+	{
+		int i=0;
+		String scheduleid="";
+		String code=Helper.readString("Enter course code to add schedule");
+		for( i=0;i<courseList.size();i++)
+		{
+			if(code.equals(courseList.get(i).getCode()) )
+			{
+				 scheduleid=Helper.readString("Enter schedule id >");
+			}
+			else
+			{
+				System.out.println("Invalid course code");
+			}
+			if(scheduleid.equals(ScheduleList.get(i).getId()))
+			{
+				courseList.get(i).setScheduleid(scheduleid);
+			}
+			else
+			{
+				System.out.println("Invalid schedule ID");
+			}
+			
+		}
+		
+	}
+	//Si How
+	public static void inputUpdate(ArrayList<Courses> courseList)
+	{
+		String code=Helper.readString("Enter course code > ");
+		
+		for(int i=0;i<courseList.size();i++)
+		{
+			if(code.equals(courseList.get(i).getCode()));
+			{
+				String title=Helper.readString("Enter course title >");
+				String categoryName=Helper.readString("Enter category name > ");
+				String description=Helper.readString("Enter course description > ");
+				int duration=Helper.readInt("Enter course duration in years > ");
+				String requisite=Helper.readString("Enter pre-requisite course > ");
+				courseList.get(i).setTitle(title);
+				courseList.get(i).setName(categoryName);
+				courseList.get(i).setDescription(description);
+				courseList.get(i).setDuration(duration);
+				courseList.get(i).setRequisite(requisite);
+				System.out.println("Course updated!");
+			}
+		}
+		
+	}
+	//Si How
+	public static void searchCourse(ArrayList<Courses> courseList)
+	{
+		String output=String.format("%-10s %-20s %-20s %-20s %-8s %-10s","COURSE CODE","TITLE","CATEGORY NAME","DESCRIPTION","DURATION","REQUISITE");
+		String categoryName=Helper.readString("Search course by category > ");
+		for(int i=0;i<courseList.size();i++)
+		{
+			if(categoryName.equals(courseList.get(i).getName()))
+			{
+				output+=String.format("\n%-10s %-20s %-20s %-20s %-8d %-10s",courseList.get(i).getCode(),courseList.get(i).getTitle(),courseList.get(i).getName()
+						,courseList.get(i).getDescription(),courseList.get(i).getDuration(),courseList.get(i).getRequisite());
+			}
+		}
+		System.out.println(output);
+	}
+	
 	
 	//Add Course Category (Elayne)
 		public static CourseCategory inputCategory() {
@@ -454,10 +532,10 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 			       
 					public static void deleteRegistrations(ArrayList<RegisterCourse>RegisterList)
 			        {
-			            String registrationNo=Helper.readString("Enter Registration No to delete > ");
+			            int registrationNo=Helper.readInt("Enter Registration No to delete > ");
 			            for(int i=0;i<RegisterList.size();i++)
 			            {
-			                if(registrationNo.equals(RegisterList.get(i).getRegistrationNo()))
+			                if(registrationNo==RegisterList.get(i).getRegistrationNo())
 			                {
 			                    RegisterList.remove(i);
 			                    System.out.println("Registrations deleted");

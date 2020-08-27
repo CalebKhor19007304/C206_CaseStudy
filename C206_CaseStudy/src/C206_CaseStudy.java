@@ -20,7 +20,7 @@ public class C206_CaseStudy {
 			int option=0;
 			int optionCourse=0;
 			int memberOption = 0;
-			
+			int subView = 0;
 			while(option!=6)
 			{
 				
@@ -40,7 +40,14 @@ public class C206_CaseStudy {
 						Member m = inputMember();
 						C206_CaseStudy.addMember(MemberList, m);
 					}else if(memberOption == 2) {
+						System.out.println("1. View all Members");
+						System.out.println("2. Search by Country of Residence");
+						subView = Helper.readInt("Enter Option > ");
+						if(subView == 1) {
 						C206_CaseStudy.viewMembers(MemberList);
+						}else if(subView == 2) {
+							C206_CaseStudy.SearchByCountry(MemberList);
+						}
 					}else if(memberOption == 3) {
 						C206_CaseStudy.deleteMember(MemberList);
 					}else if(memberOption == 4) {
@@ -238,15 +245,32 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 				if(name.equalsIgnoreCase(MemberList.get(i).getName())) {
 					String newPass = Helper.readString("Enter new password > ");
 					MemberList.get(i).setPassword(newPass);
+					
 					String newCountry = Helper.readString("Enter new Country of residence > ");
 					MemberList.get(i).setCountry(newCountry);
+					
 					int newNum = Helper.readInt("Enter new phone number > ");
 					MemberList.get(i).setMobile(newNum);
+					
 					System.out.println("Member details updated!");
 					
 				}
 			}
 		}
+	//Search by Country - Caleb
+		public static void SearchByCountry(ArrayList<Member>MemberList) {
+			
+			String Country = Helper.readString("Enter Member Country of Residence > ");
+			for(int i=0; i<MemberList.size();i++) {
+			if(Country.equalsIgnoreCase(MemberList.get(i).getCountry())) {
+				Helper.line(20, "=");
+				System.out.println(MemberList.get(i).getName());
+			}else {
+				Helper.line(20, "=");
+				System.out.println("No members found for " + Country);
+			}
+		}
+	}
 	//add course to list.Done by Si How
 	public static void addCourse(ArrayList<Courses> courseList)
 	{

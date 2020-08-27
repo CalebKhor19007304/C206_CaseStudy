@@ -282,7 +282,7 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 			}
 		}
 	}
-	//add course to list.Done by Si How
+	//add course to list.Done by Si How.
 	public static void addCourse(ArrayList<Courses> courseList)
 	{
 		boolean check=false;

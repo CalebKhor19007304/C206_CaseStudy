@@ -32,7 +32,8 @@ public class C206_CaseStudy {
 					System.out.println("1. Add member");
 					System.out.println("2. View member");
 					System.out.println("3. Delete member");
-					System.out.println("4. Quit");
+					System.out.println("4. Update member");
+					System.out.println("5. Quit");
 					memberOption = Helper.readInt("Enter option > ");
 					
 					if(memberOption == 1) {
@@ -43,6 +44,8 @@ public class C206_CaseStudy {
 					}else if(memberOption == 3) {
 						C206_CaseStudy.deleteMember(MemberList);
 					}else if(memberOption == 4) {
+						C206_CaseStudy.updateMember(MemberList);
+					}else if(memberOption == 5) {
 						System.out.println("Thank you!");
 					}else {
 						System.out.println("Invalid Option");
@@ -181,8 +184,9 @@ public class C206_CaseStudy {
 		String email = Helper.readString("Enter email address > ");
 		String DOB = Helper.readString("Enter Date of Birth (DD/MM/YYYY) > ");
 		String country = Helper.readString("Enter country of residence > ");
+		String password = Helper.readString("Enter password > ");
 		
-		Member m= new Member(name, gender,mobile,email,DOB,country);
+		Member m= new Member(name, gender,mobile,email,DOB,country,password);
 		return m;
 	}// add member - Caleb
 		public static void addMember(ArrayList<Member> MemberList, Member m) {
@@ -197,8 +201,8 @@ public class C206_CaseStudy {
 
 			for (int i = 0; i < MemberList.size(); i++) {
 
-				output += String.format("%-10s %-20c %-20d %-20s %-8s %10s\n", MemberList.get(i).getName(), MemberList.get(i).getGender(), MemberList.get(i).getMobile(),
-						MemberList.get(i).getEmail(), MemberList.get(i).getDOB(), MemberList.get(i).getCountry());
+				output += String.format("%-10s %-20c %-20d %-20s %10s %10s %10s\n", MemberList.get(i).getName(), MemberList.get(i).getGender(), MemberList.get(i).getMobile(),
+						MemberList.get(i).getEmail(), MemberList.get(i).getDOB(), MemberList.get(i).getCountry(),MemberList.get(i).getPassword());
 						
 			}
 			return output;
@@ -206,8 +210,8 @@ public class C206_CaseStudy {
 // view members - Caleb
 public static String viewMembers(ArrayList<Member> MemberList) {
 	
-	String output = String.format("%-10s %-20s %-20s %-20s %-8s %10s\n", "NAME", "GENDER",
-			"MOBILE NO", "EMAIL","DATE OF BIRTH", "COUNTRY");
+	String output = String.format("%-10s %-20s %-20s %-20s %10s %10s %10s\n", "NAME", "GENDER",
+			"MOBILE NO", "EMAIL","DATE OF BIRTH", "COUNTRY", "PASSWORD");
 	 output += retrieveALLMembers(MemberList);	
 	System.out.println(output);
 	return null;
@@ -223,6 +227,23 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 				{
 					MemberList.remove(i);
 					System.out.println("Member deleted");
+				}
+			}
+		}
+	//Update Member - Caleb
+		public static void updateMember(ArrayList<Member>MemberList)
+		{
+			String name = Helper.readString("Enter member name to update > ");
+			for(int i=0; i<MemberList.size();i++) {
+				if(name.equalsIgnoreCase(MemberList.get(i).getName())) {
+					String newPass = Helper.readString("Enter new password > ");
+					MemberList.get(i).setPassword(newPass);
+					String newCountry = Helper.readString("Enter new Country of residence > ");
+					MemberList.get(i).setCountry(newCountry);
+					int newNum = Helper.readInt("Enter new phone number > ");
+					MemberList.get(i).setMobile(newNum);
+					System.out.println("Member details updated!");
+					
 				}
 			}
 		}

@@ -66,6 +66,7 @@ public class C206_CaseStudy {
 					System.out.println("4.Update Course");
 					System.out.println("5.Search course by category");
 					System.out.println("6.Assign schedule to course");
+					System.out.println("7.List all course schedules for a course");
 					optionCourse=Helper.readInt("Enter option > ");
 					if(optionCourse==1)
 					{
@@ -90,6 +91,10 @@ public class C206_CaseStudy {
 					else if(optionCourse==6)
 					{
 						C206_CaseStudy.assignSchedule(courseList);
+					}
+					else if(optionCourse==7)
+					{
+						C206_CaseStudy.listSchForcourse(courseList);
 					}
 					else
 					{
@@ -364,6 +369,10 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 				courseList.remove(i);
 				System.out.println("Course deleted");
 			}
+			else
+			{
+				System.out.println("Course not deleted");
+			}
 		}
 	}
 	public static void assignSchedule(ArrayList<Courses> courseList)
@@ -383,7 +392,9 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 			}
 			if(scheduleid.equals(ScheduleList.get(i).getId()))
 			{
+				System.out.println("Assigned schedule to course");
 				courseList.get(i).setScheduleid(scheduleid);
+				System.out.println(courseList.get(i).getScheduleid());
 			}
 			else
 			{
@@ -429,6 +440,17 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 				output+=String.format("\n%-10s %-20s %-20s %-20s %-8d %-10s",courseList.get(i).getCode(),courseList.get(i).getTitle(),courseList.get(i).getName()
 						,courseList.get(i).getDescription(),courseList.get(i).getDuration(),courseList.get(i).getRequisite());
 			}
+		}
+		System.out.println(output);
+	}
+	//Si How
+	public static void listSchForcourse(ArrayList<Courses>courseList)
+	{
+		String output=String.format("%-10s %-20s %-20s %-20s %-8s %-10s %-10s","SCHEDULE ID","COURSE CODE","TITLE","CATEGORY NAME","DESCRIPTION","DURATION","REQUISITE");
+		for(int i=0;i<courseList.size();i++)
+		{
+			output+=String.format("\n%-10s %-20s %-20s %-20s %-10s %-8d %-10s",courseList.get(i).getScheduleid(),courseList.get(i).getCode(),courseList.get(i).getTitle(),courseList.get(i).getName()
+					,courseList.get(i).getDescription(),courseList.get(i).getDuration(),courseList.get(i).getRequisite());
 		}
 		System.out.println(output);
 	}

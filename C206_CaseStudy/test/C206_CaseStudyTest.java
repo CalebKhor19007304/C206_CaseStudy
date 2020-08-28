@@ -72,12 +72,12 @@ public class C206_CaseStudyTest {
 	@Test
 	public void retrieveAllCoursesTest()
 	{
-		assertNotNull("Test if there is valid Chromebook arraylist to retrieve item from",courseList);
+		assertNotNull("Test if there is valid course arraylist to retrieve item from",courseList);
 		C206_CaseStudy.addCourse(courseList);
 		C206_CaseStudy.viewAllCourses(courseList);
 		String allCourses=C206_CaseStudy.retrieveAllCourses(courseList);
 		String testOutput = "";
-		assertEquals("Test that the retrieved Chromebooklist is empty?", testOutput, allCourses);
+		assertEquals("Test that the retrieved course is empty?", testOutput, allCourses);
 	}
 	//Si How
 	@Test
@@ -98,11 +98,22 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.inputUpdate(courseList);
 	}
 	//Si How
+	@Test
 	public void searchByCatTest()
 	{
 		C206_CaseStudy.addCourse(courseList);
 		assertNotNull("Check if there is valid Course  to search", courseList);
 		C206_CaseStudy.searchCourse(courseList);
+	}
+	//Si How
+	@Test
+	public void listSchForCourseTest()
+	{
+		C206_CaseStudy.addCourse(courseList);
+		C206_CaseStudy.assignSchedule(courseList);
+		assertNotNull("Check if there is valid Course  to search", courseList);
+		C206_CaseStudy.listSchForcourse(courseList);
+		
 	}
 	
 	//Done by Elayne

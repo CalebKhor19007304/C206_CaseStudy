@@ -1,13 +1,13 @@
-import java.util.Date;
+
 public class RegisterCourse {
 	private int registrationNo;
     private int course_schedule_id;
     private String mail;
     private String status;
-    private Date registration_date;
+    private String registration_date;
     
     public RegisterCourse(int registrationNo, int course_schedule_id, String mail, String status,
-            Date registration_date) {
+            String registration_date) {
         this.registrationNo = registrationNo;
         this.course_schedule_id = course_schedule_id;
         this.mail = mail;
@@ -41,7 +41,7 @@ public class RegisterCourse {
 
  
 
-    public Date getRegistration_date() {
+    public String getRegistration_date() {
         return registration_date;
         
     }

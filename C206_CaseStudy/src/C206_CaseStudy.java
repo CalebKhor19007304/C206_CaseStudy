@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Date;
 public class C206_CaseStudy {
 	
 	static ArrayList<Courses>courseList=new ArrayList<Courses>();
@@ -9,8 +8,10 @@ public class C206_CaseStudy {
 	static ArrayList<RegisterCourse> RegisterList = new ArrayList<RegisterCourse>();
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-
+		MemberList.add(new Member("Dave", 'M', 95214567, "Dave@Gmail.com", "10/08/2001", "Singapore", "Dave10082001"));
+		MemberList.add(new Member("Sarah", 'F', 87654321, "Sarah@Gmail.com", "02/12/2001", "Singapore", "SarahlovesDogs"));
+		MemberList.add(new Member("Seraphine", 'F', 96358274, "Seraphine@Gmail.com", "10/08/2001", "Malaysia", "SeraphineBao"));
+		RegisterList.add(new RegisterCourse(1, 1, "Seraphine@Gmail.com", "Accepted", "10/11/2020"));
 			C206_CaseStudy crse = new C206_CaseStudy();
 			crse.start();
 	}
@@ -33,7 +34,8 @@ public class C206_CaseStudy {
 					System.out.println("2. View member");
 					System.out.println("3. Delete member");
 					System.out.println("4. Update member");
-					System.out.println("5. Quit");
+					System.out.println("5. List all upcoming events for member");
+					System.out.println("6. Quit");
 					memberOption = Helper.readInt("Enter option > ");
 					
 					if(memberOption == 1) {
@@ -53,6 +55,8 @@ public class C206_CaseStudy {
 					}else if(memberOption == 4) {
 						C206_CaseStudy.updateMember(MemberList);
 					}else if(memberOption == 5) {
+						C206_CaseStudy.viewMemberCourses(MemberList);
+					}else if(memberOption == 6) {
 						System.out.println("Thank you!");
 					}else {
 						System.out.println("Invalid Option");
@@ -266,8 +270,9 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 			String Email=Helper.readString("Enter email to delete > ");
 			for(int i=0;i<MemberList.size();i++)
 			{
-				if(Email.equals(MemberList.get(i).getEmail()))
-				{
+				if(Email.equals(RegisterList.get(i).getMail())) {
+					System.out.println("This member cannot be deleted.");
+				}else{
 					MemberList.remove(i);
 					System.out.println("Member deleted");
 				}
@@ -299,7 +304,6 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 			String Country = Helper.readString("Enter Member Country of Residence > ");
 			for(int i=0; i<MemberList.size();i++) {
 			if(Country.equalsIgnoreCase(MemberList.get(i).getCountry())) {
-				Helper.line(20, "=");
 				System.out.println(MemberList.get(i).getName());
 			}else {
 				Helper.line(20, "=");
@@ -307,6 +311,17 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 			}
 		}
 	}
+		// view member courses - Caleb
+		public static void viewMemberCourses(ArrayList<Member>MemberList) {
+			 String email = Helper.readString("Enter member's email to view upcoming courses > ");
+			    for(int i=0;i<MemberList.size();i++) {
+			      if(email.equals(RegisterList.get(i).getMail())) {
+			        System.out.println(String.format("%-20s %-20s %-20s %-20s %-20s ", "NAME","EMAIL","COURSE NO","STATUS","START DATE"));
+			        System.out.println(String.format("%-20s %-20s %-20s %-20s %-20s\n ", MemberList.get(i).getName(),MemberList.get(i).getEmail(),RegisterList.get(i).getRegistrationNo(),RegisterList.get(i).getStatus(),RegisterList.get(i).getRegistration_date()));
+			      }
+			    }
+			  }
+		
 	//add course to list.Done by Si How.
 	public static void addCourse(ArrayList<Courses> courseList)
 	{
@@ -652,7 +667,7 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 			            int course_schedule_id = Helper.readInt("Enter Course Schedule ID > ");
 			            String email = Helper.readString("Enter email address > ");
 			            String status = Helper.readString("Enter status > ");
-			            Date registrations_date= Helper.readDate("Enter Course schedule date > ");
+			            String registrations_date= Helper.readString("Enter Course schedule date > ");
 			           
 			            RegisterCourse r = new RegisterCourse(registrationNo, course_schedule_id, email,status,registrations_date);
 			            RegisterList.add(r);

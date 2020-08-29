@@ -119,7 +119,23 @@ public class C206_CaseStudy {
 						//Delete course category
 						C206_CaseStudy.deleteCategory(categoryList);
 					
-					} else {
+					} else if (catType == 4) {
+						//Update course category
+						C206_CaseStudy.updateCategory(categoryList);
+					
+					}else if (catType == 5) {
+						//Search course category
+						C206_CaseStudy.SearchCategory(categoryList);
+					
+					}else if (catType == 6) {
+						//Show course category
+						C206_CaseStudy.ShowCourses(courseList);
+					
+					}else if (catType == 7) {
+						//New Delete course category
+						C206_CaseStudy.newDeleteCategory(courseList);
+					
+					}else {
 						System.out.println("Invalid type");
 					}
 				}
@@ -196,6 +212,10 @@ public class C206_CaseStudy {
 		System.out.println("1. Add Course Category");
 		System.out.println("2. View Course Category");
 		System.out.println("3. Delete Course Catgeory");
+		System.out.println("4. Update Course Catgeory");
+		System.out.println("5. Search Course Catgeory");
+		System.out.println("6. Show courses under category");
+		System.out.println("7. New Delete Catgeory");
 	}
 	
 	//input member details - Caleb
@@ -505,6 +525,74 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 				
 			}
 		}
+		
+		//Update Course Category (Elayne)
+		public static void updateCategory(ArrayList<CourseCategory>categoryList)
+		{
+			String catName = Helper.readString("Enter category to update > ");
+			for(int i=0; i<categoryList.size();i++) {
+				if(catName.equalsIgnoreCase(categoryList.get(i).getCategoryName())) {
+					String newDesc = Helper.readString("Enter new description > ");
+					categoryList.get(i).setCategoryDesc(newDesc);;
+					
+					System.out.println("Category description updated!");
+					
+				}
+			}
+		}
+		
+		//Search Course Category (Elayne)
+		public static void SearchCategory(ArrayList<CourseCategory>categoryList) {
+			
+			String output = "";
+			
+			String catName = Helper.readString("Enter search category name > ");
+			for(int i=0; i<categoryList.size();i++) {
+			if(catName.equalsIgnoreCase(categoryList.get(i).getCategoryName())) {
+				Helper.line(20, "=");
+				output += String.format("%-50s %-50s\n", categoryList.get(i).getCategoryName(), categoryList.get(i).getCategoryDesc());
+				System.out.println(output);
+			}else {
+				Helper.line(20, "=");
+				System.out.println("No Categories found");
+			}
+		}
+	}
+		
+		//Show all Courses in Category (Elayne)
+				public static void ShowCourses(ArrayList<Courses>courseList) {
+					
+					String output = "";
+					
+					String catName = Helper.readString("Enter category name > ");
+					for(int i=0; i<courseList.size();i++) {
+					if(catName.equalsIgnoreCase(courseList.get(i).getName())) {
+						Helper.line(20, "=");
+						output += String.format("%-50s\n", courseList.get(i).getTitle());
+						System.out.println(output);
+					}else {
+						Helper.line(20, "=");
+						System.out.println("No Courses found");
+					}
+				}
+			}
+				
+				//New Delete Course Category (Elayne)
+
+				public static void newDeleteCategory(ArrayList<Courses>courseList)
+				{
+					String catName=Helper.readString("Enter category name > ");
+					for(int i=0;i<categoryList.size();i++)
+					{
+						if(catName.equalsIgnoreCase(courseList.get(i).getName()))
+						{
+							System.out.println("Category has been used in a course. unable to delete.");
+						}else {
+							categoryList.remove(i);
+						}
+						
+					}
+				}
 			
 		// Add Schedule - Hazim
 				public static Course_Schedule inputschedule() {

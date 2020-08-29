@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudyTest {
-	private Courses crse1; 
 	private ArrayList<Courses>courseList;
 	private ArrayList<Member>MemberList;
 	private ArrayList<CourseCategory>categoryList;
@@ -130,7 +129,7 @@ public class C206_CaseStudyTest {
 	}
 	//Done by Elayne
 	@Test
-	public void retrieveAllCategory()
+	public void retrieveAllCategoryTest()
 	{
 		assertNotNull("Test if there is valid Category arraylist to retrieve item from",categoryList);
 		String allCategory=C206_CaseStudy.retrieveAllCategory(categoryList);
@@ -139,12 +138,27 @@ public class C206_CaseStudyTest {
 	}
 	//Done by Elayne
 	@Test
-	public void deleteCategory()
+	public void deleteCategoryTest()
 	{
 		C206_CaseStudy.addCategory(categoryList, null);
 		assertNotNull("Check if there is valid Category to delete", categoryList);
 		C206_CaseStudy.deleteCategory(categoryList);	
 		assertEquals("Check that Category arraylist size is 0", 0, categoryList.size());
+	}
+	
+	@Test
+	public void updateCategoryTest()
+	{
+		C206_CaseStudy.addCategory(categoryList, null);
+		assertNotNull("Check if category is valid to update", categoryList);
+		C206_CaseStudy.inputCategory();
+	}
+	
+	public void searchByNameTest()
+	{
+		C206_CaseStudy.addCategory(categoryList, null);
+		assertNotNull("Check if category is valid to search", categoryList);
+		C206_CaseStudy.SearchCategory(categoryList);
 	}
 	
 	//Done by Hazim

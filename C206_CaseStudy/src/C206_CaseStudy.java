@@ -2,12 +2,13 @@ import java.util.ArrayList;
 public class C206_CaseStudy {
 	
 	static ArrayList<Courses>courseList=new ArrayList<Courses>();
-	static ArrayList<Member> MemberList = new ArrayList<Member>();
+    private static ArrayList<Member> MemberList = new ArrayList<Member>();
 	static ArrayList<CourseCategory> categoryList = new ArrayList<CourseCategory>();
 	static ArrayList<Course_Schedule> ScheduleList = new ArrayList<Course_Schedule>();
-	static ArrayList<RegisterCourse> RegisterList = new ArrayList<RegisterCourse>();
+	private static ArrayList<RegisterCourse> RegisterList = new ArrayList<RegisterCourse>();
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		MemberList = new ArrayList<Member>();
+		RegisterList = new ArrayList<RegisterCourse>();
 		MemberList.add(new Member("Dave", 'M', 95214567, "Dave@Gmail.com", "10/08/2001", "Singapore", "Dave10082001"));
 		MemberList.add(new Member("Sarah", 'F', 87654321, "Sarah@Gmail.com", "02/12/2001", "Singapore", "SarahlovesDogs"));
 		MemberList.add(new Member("Seraphine", 'F', 96358274, "Seraphine@Gmail.com", "10/08/2001", "Malaysia", "SeraphineBao"));
@@ -276,15 +277,15 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 		public static void deleteMember(ArrayList<Member>MemberList)
 		{
 			String Email=Helper.readString("Enter email to delete > ");
-			for(int i=0;i<MemberList.size();i++)
-			{
-				if(Email.equals(RegisterList.get(i).getMail())) {
-					System.out.println("This member cannot be deleted.");
-				}else{
+			for(int i=0;i<MemberList.size();i++){
+				if(Email.equals(RegisterList.get(i).getMail())){
+					System.out.println("This member cannot be deleted");
+					}else {
 					MemberList.remove(i);
 					System.out.println("Member deleted");
 				}
 			}
+			
 		}
 	//Update Member - Caleb
 		public static void updateMember(ArrayList<Member>MemberList)
@@ -313,9 +314,6 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 			for(int i=0; i<MemberList.size();i++) {
 			if(Country.equalsIgnoreCase(MemberList.get(i).getCountry())) {
 				System.out.println(MemberList.get(i).getName());
-			}else {
-				Helper.line(20, "=");
-				System.out.println("No members found for " + Country);
 			}
 		}
 	}

@@ -58,8 +58,10 @@ public class C206_CaseStudyTest {
 	// Caleb
 	@Test
 	public void updateMemberTest() {
+		assertEquals("Check that Member arraylist size is 0", 0, MemberList.size());
+		assertNotNull("Check if there is valid member in the arraylist to update", MemberList);
 		C206_CaseStudy.updateMember(MemberList);
-		assertNotNull("Check if there is valid Course to update", courseList);
+		assertNotNull("Check if there is valid member to update",MemberList);
 		C206_CaseStudy.updateMember(MemberList);
 	}
 	// Caleb
@@ -224,7 +226,7 @@ public class C206_CaseStudyTest {
 			}
 		// Ganxi
         @Test
-        public void registerCourseScheduleTest() {
+        public void registerCourseSchedule() {
             assertEquals("Check that RegisterCourse arraylist size is 0", 0, RegisterList.size());
             assertNotNull("Check if there is valid Course arraylist to add to", RegisterList);
             C206_CaseStudy.registerCourseSchedule(RegisterList);
@@ -235,35 +237,18 @@ public class C206_CaseStudyTest {
         }
         // Ganxi
         @Test
-        public void retrieveRegistrationsTest() {
+        public void viewRegistrations() {
             assertNotNull("Test if there is valid Register arraylist to retrieve item from",RegisterList);
-            String allRegistrations=C206_CaseStudy.retrieveAllRegisterCourses(RegisterList);
+            String allRegistrations=C206_CaseStudy.viewRegistrations(RegisterList);
             String testOutput = "";
             assertEquals("Test that the retrieved Registerlist is empty?", testOutput, allRegistrations);
         }
         // Ganxi
         @Test
-        public void deleteRegistrationsTest() {
+        public void deleteRegistrations() {
             C206_CaseStudy.registerCourseSchedule(RegisterList);
             assertNotNull("Check if there is valid Registrations to delete", RegisterList);
             C206_CaseStudy.deleteRegistrations(RegisterList);   
             assertEquals("Check that Register arraylist size is 0", 0, RegisterList.size());
         }
-        
-        //Ganxi
-        @Test
-    	public void updateRegistrationStatusTest()
-    	{
-    		C206_CaseStudy.registerCourseSchedule(RegisterList);
-    		assertNotNull("Check if registraion is valid to update", RegisterList);
-    		C206_CaseStudy.inputCategory();
-    	}
-    	
-        //ganxi
-    	public void searchByCourseScheduleIDTest()
-    	{
-    		C206_CaseStudy.registerCourseSchedule(RegisterList);
-    		assertNotNull("Check if registration is valid to search", RegisterList);
-    		C206_CaseStudy.SearchRegistration(RegisterList);
-    	}
 }

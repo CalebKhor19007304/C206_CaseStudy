@@ -266,5 +266,6 @@ public class C206_CaseStudyTest {
 		{
 			C206_CaseStudy.registerCourseSchedule(RegisterList);
 			assertNotNull("Check if registration is valid to search", RegisterList);
-			C206_CaseStudy.SearchRegistration(RegisterList);;
+			C206_CaseStudy.SearchRegistration(RegisterList);
+		}
 }

@@ -825,7 +825,7 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 					}
 				}
 				
-				// show course schedule by member
+				// show course schedule by member Ganxi
 				public static void ShowCourseschedule(ArrayList<RegisterCourse>RegisterList) {
 					String email = Helper.readString("Enter member's email to view course schdule registered > ");
 					for(int i=0;i<RegisterList.size();i++) {
@@ -836,7 +836,7 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 						}
 				}
 				
-				
+				// new delete registration Ganxi
 				public static void newDeleteRegistration(ArrayList<RegisterCourse>RegisterList)
 				{
 					int regNo =Helper.readInt("Enter registration no > ");

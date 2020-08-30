@@ -177,6 +177,10 @@ public class C206_CaseStudy {
 					System.out.println("1.Register Course Schedule");
                     System.out.println("2.View Registrations");
                     System.out.println("3.Delete Registrations");
+                    System.out.println("4.Update Course Registration Status");
+					System.out.println("5.Search Registration by Course Schedule ID");
+					System.out.println("6.");
+					System.out.println("7.List all course schedules registered by a member");
                     int registerOption = Helper.readInt("Enter option > ");
                    
                     if(registerOption == 1) {
@@ -186,7 +190,13 @@ public class C206_CaseStudy {
                     }else if(registerOption == 3) {
                         C206_CaseStudy.deleteRegistrations(RegisterList);
                     }else if(registerOption == 4) {
-                        System.out.println("Thank you!");
+                    	C206_CaseStudy.updateRegistration(RegisterList);  
+                    }else if(registerOption == 5) {
+                    	C206_CaseStudy.SearchRegistration(RegisterList);
+                    }else if(registerOption == 6) {
+                    	C206_CaseStudy.ShowCourses(MemberList);
+                    }else if(registerOption == 7) {
+                    	C206_CaseStudy.newDeleteSchedule(MemberList);;
                     }else {
                         System.out.println("Invalid Option");
                     }
@@ -756,7 +766,7 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 			           
 			            for(int i=0;i<RegisterList.size();i++)
 			            {
-			                output+=String.format("%-15d %-10d %-20s %-10s %-10s\n",RegisterList.get(i).getRegistrationNo(),
+			                output+=String.format("%-15d %-20d %-20s %-10s %-10s\n",RegisterList.get(i).getRegistrationNo(),
 			                        RegisterList.get(i).getCourse_schedule_id(), RegisterList.get(i).getMail(),
 			                        RegisterList.get(i).getStatus(), RegisterList.get(i).getRegistration_date()) ;
 			            }
@@ -788,5 +798,40 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 			                }
 			            }
 			        }
-
+					
+					//Update status Ganxi
+					public static void updateRegistration(ArrayList<RegisterCourse>RegisterList)
+					{
+						int registrationNo = Helper.readInt("Enter Registration No to update > ");
+						for(int i=0; i<RegisterList.size();i++) {
+							if(registrationNo == RegisterList.get(i).getRegistrationNo()) {
+								String newStatus = Helper.readString("Enter new status > ");
+								RegisterList.get(i).setStatus(newStatus);
+								
+								System.out.println("Course Registration Status updated!");
+								
+							}
+						}
+					}
+					
+					//Search registration Ganxi
+					public static void SearchRegistration(ArrayList<RegisterCourse>RegisterList) {
+						
+						String output=String.format("%-15s %-20s %-20s %-10s %-10s \n","REGISTRATION NO","COURSE SCHEDULE ID","MAIL","STATUS","DATE");
+						
+						int coursescheduleid = Helper.readInt("Enter course schedule id > ");
+						for(int i=0; i<RegisterList.size();i++) {
+						if(coursescheduleid == RegisterList.get(i).getCourse_schedule_id()) {
+							output+=String.format("%-15d %-20d %-20s %-10s %-10s\n",RegisterList.get(i).getRegistrationNo(),
+			                RegisterList.get(i).getCourse_schedule_id(), RegisterList.get(i).getMail(),
+			                RegisterList.get(i).getStatus(), RegisterList.get(i).getRegistration_date()) ;
+							System.out.println(output);
+						}else {
+							
+							System.out.println("No Registration found");
+						}
+					}
 				}
+					
+
+}

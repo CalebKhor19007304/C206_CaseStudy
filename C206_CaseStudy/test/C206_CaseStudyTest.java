@@ -210,7 +210,7 @@ public class C206_CaseStudyTest {
 			}
 		// Ganxi
         @Test
-        public void registerCourseSchedule() {
+        public void registerCourseScheduleTest() {
             assertEquals("Check that RegisterCourse arraylist size is 0", 0, RegisterList.size());
             assertNotNull("Check if there is valid Course arraylist to add to", RegisterList);
             C206_CaseStudy.registerCourseSchedule(RegisterList);
@@ -221,15 +221,15 @@ public class C206_CaseStudyTest {
         }
         // Ganxi
         @Test
-        public void viewRegistrations() {
+        public void retrieveRegistrationsTest() {
             assertNotNull("Test if there is valid Register arraylist to retrieve item from",RegisterList);
-            String allRegistrations=C206_CaseStudy.viewRegistrations(RegisterList);
+            String allRegistrations=C206_CaseStudy.retrieveAllRegisterCourses(RegisterList);
             String testOutput = "";
             assertEquals("Test that the retrieved Registerlist is empty?", testOutput, allRegistrations);
         }
         // Ganxi
         @Test
-        public void deleteRegistrations() {
+        public void deleteRegistrationsTest() {
             C206_CaseStudy.registerCourseSchedule(RegisterList);
             assertNotNull("Check if there is valid Registrations to delete", RegisterList);
             C206_CaseStudy.deleteRegistrations(RegisterList);   

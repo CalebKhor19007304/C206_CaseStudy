@@ -179,8 +179,8 @@ public class C206_CaseStudy {
                     System.out.println("3.Delete Registrations");
                     System.out.println("4.Update Course Registration Status");
 					System.out.println("5.Search Registration by Course Schedule ID");
-					System.out.println("6.");
-					System.out.println("7.List all course schedules registered by a member");
+					System.out.println("6.List all course schedules registered by a member");
+					System.out.println("7.New Delete Registration");
                     int registerOption = Helper.readInt("Enter option > ");
                     
                     if(registerOption == 1) {
@@ -196,7 +196,7 @@ public class C206_CaseStudy {
                     }else if(registerOption == 6) {
                     	C206_CaseStudy.ShowCourseschedule(RegisterList);
                     }else if(registerOption == 7) {
-                    	C206_CaseStudy.newDeleteSchedule(RegisterList);;
+                    	C206_CaseStudy.newDeleteRegistration(RegisterList);;
                     }else {
                         System.out.println("Invalid Option");
                     }
@@ -770,22 +770,22 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 			    	return output;
 			    }
 			    //view Ganxi
-			    public static String viewRegistrations(ArrayList<RegisterCourse>RegisterList)
+			    public static void viewRegistrations(ArrayList<RegisterCourse>RegisterList)
 			    {
 			    	System.out.println("REGISTRATION");
 			    	String output=String.format("%-15s %-20s %-20s %-10s %-10s \n","REGISTRATION NO","COURSE SCHEDULE ID","MAIL","STATUS","DATE");
 			    	output+=retrieveAllRegisterCourses(RegisterList);
 			    	System.out.println(output);
-			    	return null;
+			    	
 			    }
 			       
 			    //delete Ganxi
 			    public static void deleteRegistrations(ArrayList<RegisterCourse>RegisterList)
 			    {
-			    	int registrationNo=Helper.readInt("Enter Registration No to delete > ");
+			    	String registrationNo=Helper.readString("Enter Registration No to delete > ");
 			    	for(int i=0;i<RegisterList.size();i++)
 			    	{
-			    		if(registrationNo==RegisterList.get(i).getRegistrationNo())
+			    		if(registrationNo.equals(RegisterList.get(i).getRegistrationNo()))
 			    		{
 			    			RegisterList.remove(i);
 			    			System.out.println("Registrations deleted");
@@ -834,6 +834,23 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 							System.out.println(String.format("%-20s %-20d %-20s %-20s %-20s\n", ScheduleList.get(i).getId(), ScheduleList.get(i).getPrice(), ScheduleList.get(i).getStartdate(),ScheduleList.get(i).getEnddate(), ScheduleList.get(i).getLocation()));
 							}
 						}
+				}
+				
+				
+				public static void newDeleteRegistration(ArrayList<RegisterCourse>RegisterList)
+				{
+					int regNo =Helper.readInt("Enter registration no > ");
+					String status =Helper.readString("Enter status > ");
+					for(int i=0;i<RegisterList.size();i++)
+					{
+						if(status == "Accepted")
+						{
+							System.out.println(" Course Schedule registration status is Accepted. Unable to delete!");
+						}else {
+							RegisterList.remove(i);
+						}
+						
 					}
+				}
 
 }

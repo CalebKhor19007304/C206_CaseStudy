@@ -236,6 +236,7 @@ public class C206_CaseStudyTest {
             assertEquals("Check that Register arraylist size is 0", 0, RegisterList.size());
         }
         
+        //Ganxi
         @Test
     	public void updateRegistrationStatusTest()
     	{
@@ -244,6 +245,7 @@ public class C206_CaseStudyTest {
     		C206_CaseStudy.inputCategory();
     	}
     	
+        //ganxi
     	public void searchByCourseScheduleIDTest()
     	{
     		C206_CaseStudy.registerCourseSchedule(RegisterList);

@@ -182,7 +182,7 @@ public class C206_CaseStudy {
 					System.out.println("6.");
 					System.out.println("7.List all course schedules registered by a member");
                     int registerOption = Helper.readInt("Enter option > ");
-                   
+                    
                     if(registerOption == 1) {
                         C206_CaseStudy.registerCourseSchedule(RegisterList);
                     }else if(registerOption == 2) {
@@ -194,9 +194,9 @@ public class C206_CaseStudy {
                     }else if(registerOption == 5) {
                     	C206_CaseStudy.SearchRegistration(RegisterList);
                     }else if(registerOption == 6) {
-                    	C206_CaseStudy.ShowCourses(MemberList);
+                    	C206_CaseStudy.ShowCourseschedule(RegisterList);
                     }else if(registerOption == 7) {
-                    	C206_CaseStudy.newDeleteSchedule(MemberList);;
+                    	C206_CaseStudy.newDeleteSchedule(RegisterList);;
                     }else {
                         System.out.println("Invalid Option");
                     }
@@ -746,92 +746,94 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 					}
 				}
 			    //Register Ganxi
-			        public static void registerCourseSchedule(ArrayList<RegisterCourse> RegisterList){
-			           
-			            int registrationNo = Helper.readInt("Enter Registration No > ");
-			            int course_schedule_id = Helper.readInt("Enter Course Schedule ID > ");
-			            String email = Helper.readString("Enter email address > ");
-			            String status = Helper.readString("Enter status > ");
-			            String registrations_date= Helper.readString("Enter Course schedule date > ");
-			           
-			            RegisterCourse r = new RegisterCourse(registrationNo, course_schedule_id, email,status,registrations_date);
-			            RegisterList.add(r);
-			            System.out.println("Register successful!!");
-			        }
+			    public static void registerCourseSchedule(ArrayList<RegisterCourse> RegisterList){
+			    	int registrationNo = Helper.readInt("Enter Registration No > ");
+			    	int course_schedule_id = Helper.readInt("Enter Course Schedule ID > ");
+			    	String email = Helper.readString("Enter email address > ");
+			    	String status = Helper.readString("Enter status > ");
+			    	String registrations_date= Helper.readString("Enter Course schedule date > ");
+			    	
+			    	RegisterCourse r = new RegisterCourse(registrationNo, course_schedule_id, email,status,registrations_date);
+			    	RegisterList.add(r);
+			    	System.out.println("Register successful!!");
+			   }
+			    //view Ganxi
+			    public static String retrieveAllRegisterCourses(ArrayList<RegisterCourse>RegisterList)
+			    {
+			    	String output="";
+			    	for(int i=0;i<RegisterList.size();i++)
+			    	{
+			    		output+=String.format("%-15d %-20d %-20s %-10s %-10s\n",RegisterList.get(i).getRegistrationNo(),
+			    				RegisterList.get(i).getCourse_schedule_id(), RegisterList.get(i).getMail(),
+			                    RegisterList.get(i).getStatus(), RegisterList.get(i).getRegistration_date()) ;
+			    		}
+			    	return output;
+			    }
+			    //view Ganxi
+			    public static String viewRegistrations(ArrayList<RegisterCourse>RegisterList)
+			    {
+			    	System.out.println("REGISTRATION");
+			    	String output=String.format("%-15s %-20s %-20s %-10s %-10s \n","REGISTRATION NO","COURSE SCHEDULE ID","MAIL","STATUS","DATE");
+			    	output+=retrieveAllRegisterCourses(RegisterList);
+			    	System.out.println(output);
+			    	return null;
+			    }
 			       
-			        //view Ganxi
-			        public static String retrieveAllRegisterCourses(ArrayList<RegisterCourse>RegisterList)
-			        {
-			            String output="";
-			           
-			            for(int i=0;i<RegisterList.size();i++)
-			            {
-			                output+=String.format("%-15d %-20d %-20s %-10s %-10s\n",RegisterList.get(i).getRegistrationNo(),
-			                        RegisterList.get(i).getCourse_schedule_id(), RegisterList.get(i).getMail(),
-			                        RegisterList.get(i).getStatus(), RegisterList.get(i).getRegistration_date()) ;
-			            }
-			            return output;
-			        }
-			       
-			        ////view Ganxi
-			        public static String viewRegistrations(ArrayList<RegisterCourse>RegisterList)
-			        {
-			            System.out.println("REGISTRATION");
-			            String output=String.format("%-15s %-20s %-20s %-10s %-10s \n","REGISTRATION NO","COURSE SCHEDULE ID","MAIL","STATUS","DATE");
-			            output+=retrieveAllRegisterCourses(RegisterList);
-			            System.out.println(output);
-			            return null;
-			        }
-			       
-			        //delete Ganxi
-			       
-					public static void deleteRegistrations(ArrayList<RegisterCourse>RegisterList)
-			        {
-			            int registrationNo=Helper.readInt("Enter Registration No to delete > ");
-			            for(int i=0;i<RegisterList.size();i++)
-			            {
-			                if(registrationNo==RegisterList.get(i).getRegistrationNo())
-			                {
-			                    RegisterList.remove(i);
-			                    System.out.println("Registrations deleted");
-			                   
-			                }
-			            }
-			        }
+			    //delete Ganxi
+			    public static void deleteRegistrations(ArrayList<RegisterCourse>RegisterList)
+			    {
+			    	int registrationNo=Helper.readInt("Enter Registration No to delete > ");
+			    	for(int i=0;i<RegisterList.size();i++)
+			    	{
+			    		if(registrationNo==RegisterList.get(i).getRegistrationNo())
+			    		{
+			    			RegisterList.remove(i);
+			    			System.out.println("Registrations deleted");
+			    			}
+			    		}
+			    }
 					
-					//Update status Ganxi
-					public static void updateRegistration(ArrayList<RegisterCourse>RegisterList)
-					{
-						int registrationNo = Helper.readInt("Enter Registration No to update > ");
-						for(int i=0; i<RegisterList.size();i++) {
-							if(registrationNo == RegisterList.get(i).getRegistrationNo()) {
-								String newStatus = Helper.readString("Enter new status > ");
-								RegisterList.get(i).setStatus(newStatus);
+				//Update status Ganxi
+				public static void updateRegistration(ArrayList<RegisterCourse>RegisterList)
+				{
+					int registrationNo = Helper.readInt("Enter Registration No to update > ");
+					for(int i=0; i<RegisterList.size();i++) {
+						if(registrationNo == RegisterList.get(i).getRegistrationNo()) {
+							String newStatus = Helper.readString("Enter new status > ");
+							RegisterList.get(i).setStatus(newStatus);
 								
-								System.out.println("Course Registration Status updated!");
+							System.out.println("Course Registration Status updated!");
 								
-							}
-						}
-					}
-					
-					//Search registration Ganxi
-					public static void SearchRegistration(ArrayList<RegisterCourse>RegisterList) {
-						
-						String output=String.format("%-15s %-20s %-20s %-10s %-10s \n","REGISTRATION NO","COURSE SCHEDULE ID","MAIL","STATUS","DATE");
-						
-						int coursescheduleid = Helper.readInt("Enter course schedule id > ");
-						for(int i=0; i<RegisterList.size();i++) {
-						if(coursescheduleid == RegisterList.get(i).getCourse_schedule_id()) {
-							output+=String.format("%-15d %-20d %-20s %-10s %-10s\n",RegisterList.get(i).getRegistrationNo(),
-			                RegisterList.get(i).getCourse_schedule_id(), RegisterList.get(i).getMail(),
-			                RegisterList.get(i).getStatus(), RegisterList.get(i).getRegistration_date()) ;
-							System.out.println(output);
-						}else {
-							
-							System.out.println("No Registration found");
 						}
 					}
 				}
 					
+				//Search registration Ganxi
+				public static void SearchRegistration(ArrayList<RegisterCourse>RegisterList) {
+					String output=String.format("%-15s %-20s %-20s %-10s %-10s \n","REGISTRATION NO","COURSE SCHEDULE ID","MAIL","STATUS","DATE");
+						
+					int coursescheduleid = Helper.readInt("Enter course schedule id > ");
+					for(int i=0; i<RegisterList.size();i++) {
+					if(coursescheduleid == RegisterList.get(i).getCourse_schedule_id()) {
+						output+=String.format("%-15d %-20d %-20s %-10s %-10s\n",RegisterList.get(i).getRegistrationNo(),
+			               RegisterList.get(i).getCourse_schedule_id(), RegisterList.get(i).getMail(),
+			               RegisterList.get(i).getStatus(), RegisterList.get(i).getRegistration_date()) ;
+						System.out.println(output);
+						}else {
+							System.out.println("No Registration found");
+						}
+					}
+				}
+				
+				// show course schedule by member
+				public static void ShowCourseschedule(ArrayList<RegisterCourse>RegisterList) {
+					String email = Helper.readString("Enter member's email to view course schdule registered > ");
+					for(int i=0;i<RegisterList.size();i++) {
+						if(email.equals(RegisterList.get(i).getMail())) {
+							System.out.println(String.format("%-20s %-20s %-20s %-20s %-20s\n", "Schedule ID", "PRICE", "START DATE", "END DATE", "LOCATION"));
+							System.out.println(String.format("%-20s %-20d %-20s %-20s %-20s\n", ScheduleList.get(i).getId(), ScheduleList.get(i).getPrice(), ScheduleList.get(i).getStartdate(),ScheduleList.get(i).getEnddate(), ScheduleList.get(i).getLocation()));
+							}
+						}
+					}
 
 }

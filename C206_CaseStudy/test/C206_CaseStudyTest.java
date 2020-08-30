@@ -239,7 +239,7 @@ public class C206_CaseStudyTest {
         @Test
         public void viewRegistrations() {
             assertNotNull("Test if there is valid Register arraylist to retrieve item from",RegisterList);
-            String allRegistrations=C206_CaseStudy.viewRegistrations(RegisterList);
+            String allRegistrations=C206_CaseStudy.retrieveAllRegisterCourses(RegisterList);
             String testOutput = "";
             assertEquals("Test that the retrieved Registerlist is empty?", testOutput, allRegistrations);
         }

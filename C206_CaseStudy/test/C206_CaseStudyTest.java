@@ -55,6 +55,20 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.deleteMember(MemberList);	
 		assertEquals("Check that Member arraylist size is 0", 0, MemberList.size());
 	}
+	// Caleb
+	@Test
+	public void updateMemberTest() {
+		C206_CaseStudy.updateMember(MemberList);
+		assertNotNull("Check if there is valid Course to update", courseList);
+		C206_CaseStudy.updateMember(MemberList);
+	}
+	// Caleb
+	@Test
+	public void searchByCountryTest() {
+		C206_CaseStudy.SearchByCountry(MemberList);
+		assertNotNull("Check if the country search matches with the member country detail", MemberList);
+		C206_CaseStudy.viewMembers(MemberList);
+	}
 	//Si How
 	@Test
 	public void addCourseTest()

@@ -157,11 +157,19 @@ public class C206_CaseStudy {
 						C206_CaseStudy.viewAllSchedules(ScheduleList);
 					}else if(optionSchedule == 3) {
 						C206_CaseStudy.deleteSchedule(ScheduleList);
-						
+					}else if(optionSchedule == 4) {
+						C206_CaseStudy.updateSchedule(ScheduleList);
+					}else if(optionSchedule == 5) {
+						C206_CaseStudy.SearchPrice(ScheduleList);
+					}else if(optionSchedule == 6) {
+						C206_CaseStudy.ShowRegMembers(RegisterList);
+					}else if (optionSchedule == 7) {
+						C206_CaseStudy.newDeleteSchedule(RegisterList);;				
 					}else {
 						System.out.println("INVALID OPTION!!!");
 					}
 					}
+			
 				
 				else if(option==5) //Ganxi
 				{
@@ -659,7 +667,76 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 					}
 					
 				}
-				
+				//Update Course Schedule (Hazim)
+				public static void updateSchedule(ArrayList<Course_Schedule>ScheduleList)
+				{
+					String ScheID = Helper.readString("Enter Schedule ID to update > ");
+					for(int i=0; i<ScheduleList.size();i++) {
+						if(ScheID.equalsIgnoreCase(ScheduleList.get(i).getId())) {
+							int newPrice = Helper.readInt("Enter new Price > ");
+							ScheduleList.get(i).setPrice(newPrice);
+							String newStartDate = Helper.readString("Enter new start date > ");
+							ScheduleList.get(i).setStartDate(newStartDate);
+							String newEndDate = Helper.readString("Enter new end date > ");
+							ScheduleList.get(i).setEnddate(newEndDate);
+							String newLocation = Helper.readString("Enter new location > ");
+							ScheduleList.get(i).setLocation(newLocation);
+							
+							System.out.println("Course Schedule updated!");
+							
+						}
+					}
+				}
+				//Search Course Schedule by Price (Hazim)
+				public static void SearchPrice(ArrayList<Course_Schedule>ScheduleList) {
+					
+					String output = "";
+					
+					int SchePrice = Helper.readInt("Enter Course Schedule price > ");
+					for(int i=0; i<ScheduleList.size();i++) {
+					if(SchePrice == ScheduleList.get(i).getPrice()) {
+						Helper.line(20, "=");
+						output += String.format("%-50s %-50d\n", ScheduleList.get(i).getId(), ScheduleList.get(i).getPrice());
+						System.out.println(output);
+					}else {
+						Helper.line(20, "=");
+						System.out.println("No Schedules found");
+					}
+				}
+			}
+				//Show all Members in Schedules (Hazim)
+				public static void ShowRegMembers(ArrayList<RegisterCourse>RegisterList) {
+					
+					String output = "";
+					
+					int ScheID1 = Helper.readInt("Enter Schedule  ID > ");
+					for(int i=0; i<RegisterList.size();i++) {
+					if(ScheID1 == RegisterList.get(i).getCourse_schedule_id()) {
+						Helper.line(20, "=");
+						output += String.format("%-50d\n", RegisterList.get(i).getCourse_schedule_id());
+						System.out.println(output);
+					}else {
+						Helper.line(20, "=");
+						System.out.println("No Members found");
+					}
+				}
+			}
+				//New Delete Course Schedule (Hazim)
+
+				public static void newDeleteSchedule(ArrayList<RegisterCourse>RegisterList)
+				{
+					int ScheID2=Helper.readInt("Enter schedule ID > ");
+					for(int i=0;i<ScheduleList.size();i++)
+					{
+						if(ScheID2 == RegisterList.get(i).getCourse_schedule_id())
+						{
+							System.out.println("Schedule has been Registered by a member. Unable to delete!");
+						}else {
+							ScheduleList.remove(i);
+						}
+						
+					}
+				}
 			    //Register Ganxi
 			        public static void registerCourseSchedule(ArrayList<RegisterCourse> RegisterList){
 			           

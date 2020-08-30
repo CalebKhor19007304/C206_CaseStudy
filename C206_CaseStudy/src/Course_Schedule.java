@@ -28,10 +28,21 @@ public class Course_Schedule {
     public String getLocation() {
         return Location;
     }
-    
-    
+    public void setPrice(int price) {
+    	this.price = price;
+    }
+    public void setStartDate(String startdate) {
+    	this.startdate = startdate;
+    }
+    public void setEnddate(String enddate) {
+    	this.enddate = enddate;
+    }
+    public void setLocation(String Location) {
+    	this.Location = Location;
+    }
 
  
 
 }
+
 

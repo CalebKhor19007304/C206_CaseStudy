@@ -235,4 +235,19 @@ public class C206_CaseStudyTest {
             C206_CaseStudy.deleteRegistrations(RegisterList);   
             assertEquals("Check that Register arraylist size is 0", 0, RegisterList.size());
         }
+        
+        @Test
+    	public void updateRegistrationStatusTest()
+    	{
+    		C206_CaseStudy.registerCourseSchedule(RegisterList);
+    		assertNotNull("Check if registraion is valid to update", RegisterList);
+    		C206_CaseStudy.inputCategory();
+    	}
+    	
+    	public void searchByCourseScheduleIDTest()
+    	{
+    		C206_CaseStudy.registerCourseSchedule(RegisterList);
+    		assertNotNull("Check if registration is valid to search", RegisterList);
+    		C206_CaseStudy.SearchRegistration(RegisterList);
+    	}
 }

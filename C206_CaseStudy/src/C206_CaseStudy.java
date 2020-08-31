@@ -600,12 +600,14 @@ public static String viewMembers(ArrayList<Member> MemberList) {
 					if(catName.equalsIgnoreCase(courseList.get(i).getName())) {
 						Helper.line(20, "=");
 						output += String.format("%-50s\n", courseList.get(i).getTitle());
-						System.out.println(output);
+						
 					}else {
 						Helper.line(20, "=");
 						System.out.println("No Courses found");
 					}
+					
 				}
+					System.out.println(output);
 			}
 				
 				//New Delete Course Category (Elayne)
